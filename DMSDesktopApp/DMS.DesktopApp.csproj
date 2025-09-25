@@ -1,0 +1,147 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyVersion>4.6.0.0</AssemblyVersion>
+    <FileVersion>4.6.0.0</FileVersion>
+    <Authors>Rohit Negi</Authors>
+    <Company>Daand Coders Pvt. Ltd.</Company>
+    <Copyright>DCS Limited</Copyright>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Platforms>AnyCPU;x86</Platforms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>05bfd3f1-6319-4f30-b752-c7a22889bcc4</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <WrapperTool>aximp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>05bfd3f1-6319-4f30-b752-c7a22889bcc4</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AForge.Imaging" Version="2.2.5" />
+    <PackageReference Include="EFCore.BulkExtensions.MySql" Version="8.1.3" />
+    <PackageReference Include="itext.bouncy-castle-fips-adapter" Version="9.2.0" />
+    <PackageReference Include="itext7" Version="9.1.0" />
+    <PackageReference Include="itext7.bouncy-castle-fips-adapter" Version="9.2.0" />
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+    <PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1" />
+    <PackageReference Include="LiveCharts.WinForms.NetCore3" Version="0.9.8" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="14.8.2" />
+    <PackageReference Include="MetroFramework" Version="1.2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
+    <PackageReference Include="NTwain" Version="3.7.5" />
+    <PackageReference Include="OpenCvSharp4" Version="4.10.0.20241108" />
+    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.10.0.20241108" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.10.0.20241108" />
+    <PackageReference Include="OpenCvSharp4.Windows" Version="4.10.0.20241108" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DaandCoders\DC.Library\DC.OCR\DC.OCR.csproj" />
+    <ProjectReference Include="..\..\..\DaandCoders\DC.Library\ImagUtilityQ16\DC.ImagUtility.Q16.csproj" />
+    <ProjectReference Include="..\..\..\DaandCoders\DC.Services\DC.DMS.Services\DC.DMS.Services.csproj" />
+    <ProjectReference Include="..\DMS.API.WindowsServices\DMS.API.WindowsServices.csproj" />
+    <ProjectReference Include="..\DMS.Context\DMS.Context.csproj" />
+    <ProjectReference Include="..\DMS.Migrations\DMS.Migrations.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
+    <Reference Include="DC.Highlighter">
+      <HintPath>bin\Debug\net9.0-windows\DC.Highlighter.dll</HintPath>
+    </Reference>
+    <Reference Include="DC.Miscellaneous">
+      <HintPath>bin\Debug\net9.0-windows\DC.Miscellaneous.dll</HintPath>
+    </Reference>
+    <Reference Include="DC.Tools">
+      <HintPath>bin\Debug\net9.0-windows\DC.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Batch">
+      <HintPath>..\..\..\..\Applications\Obfuscated Files\Microsoft.Windows.Batch.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DC.Miscellaneous">
+      <HintPath>bin\Debug\net9.0-windows\DC.Miscellaneous.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Batch">
+      <HintPath>bin\Debug\net9.0-windows\Microsoft.Windows.Batch.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Log">
+      <HintPath>bin\Debug\net9.0-windows\Microsoft.Windows.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Utilities">
+      <HintPath>bin\Debug\net9.0-windows\Microsoft.Windows.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Security">
+      <HintPath>bin\Debug\net9.0-windows\Security.dll</HintPath>
+    </Reference>
+    <Reference Include="UKA.Windows.Forms.ImageBox">
+      <HintPath>bin\Debug\net9.0-windows\UKA.Windows.Forms.ImageBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Validation">
+      <HintPath>bin\Debug\net9.0-windows\Validation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\actualSize.png" />
+    <Resource Include="Resources\checkboxChecked50x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Shared\frmDepartmentSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

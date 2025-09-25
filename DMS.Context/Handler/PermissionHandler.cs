@@ -1,0 +1,39 @@
+﻿namespace DC.Services.Handler
+{
+    //public class PermissionHandler : AuthorizationHandler<AuthorizationRequirement>
+    //{
+    //    //private readonly IDataAccessService dataAccessService;
+
+    //    //public PermissionHandler(IDataAccessService dataAccessService)
+    //    //{
+    //    //    this.dataAccessService = dataAccessService;
+    //    //}
+
+    //    //protected async override Task HandleRequirementAsync(AuthorizationHandlerContext context, AuthorizationRequirement requirement)
+    //    //{
+    //    //    if (context.Resource is DefaultHttpContext ctx)
+    //    //    {
+    //    //        RouteEndpoint? endpoint = ctx.GetEndpoint() as RouteEndpoint;
+    //    //        endpoint.RoutePattern.RequiredValues.TryGetValue("controller", out var _controller);
+    //    //        endpoint.RoutePattern.RequiredValues.TryGetValue("action", out var _action);
+
+    //    //        endpoint.RoutePattern.RequiredValues.TryGetValue("page", out var _page);
+    //    //        endpoint.RoutePattern.RequiredValues.TryGetValue("area", out var _area);
+
+    //    //        // Check if a parent action is permitted then it'll allow child without checking for child permissions
+    //    //        if (!string.IsNullOrWhiteSpace(requirement?.PermissionName) && !requirement.PermissionName.Equals("Authorization"))
+    //    //        {
+    //    //            _action = requirement.PermissionName;
+    //    //        }
+
+    //    //        if (context.User.Identity.IsAuthenticated && _controller != null && _action != null &&
+    //    //            await dataAccessService.GetMenuItemsAsync(context.User, _controller.ToString(), _action.ToString()))
+    //    //        {
+    //    //            context.Succeed(requirement);
+    //    //        }
+    //    //    }
+
+    //    //    await Task.CompletedTask;
+    //    //}
+    //}
+}

@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.DesktopApp", "DMSDesktopApp\DMS.DesktopApp.csproj", "{56834EDB-D585-40B5-888E-EF692479BFB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.Context", "DMS.Context\DMS.Context.csproj", "{68618BA7-864C-4F0E-9138-47D29083CD14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.Migrations", "DMS.Migrations\DMS.Migrations.csproj", "{B5CC1091-9171-4ECE-B65C-743A8CB49E37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.API.WindowsServices", "DMS.API.WindowsServices\DMS.API.WindowsServices.csproj", "{CF611687-1056-599E-E990-0F064C0B98FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.DMS.Services", "..\..\DaandCoders\DC.Services\DC.DMS.Services\DC.DMS.Services.csproj", "{B86A46B0-0016-D6CD-4217-7375879CFAAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.ImagUtility.Q16", "..\..\DaandCoders\DC.Library\ImagUtilityQ16\DC.ImagUtility.Q16.csproj", "{5E7A6FAD-577E-D3B7-049F-FD3C6AC51C60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DC.OCR", "..\..\DaandCoders\DC.Library\DC.OCR\DC.OCR.csproj", "{1AFECFC2-825B-A61F-0564-FCF2A7C38A28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56834EDB-D585-40B5-888E-EF692479BFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56834EDB-D585-40B5-888E-EF692479BFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56834EDB-D585-40B5-888E-EF692479BFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56834EDB-D585-40B5-888E-EF692479BFB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68618BA7-864C-4F0E-9138-47D29083CD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68618BA7-864C-4F0E-9138-47D29083CD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68618BA7-864C-4F0E-9138-47D29083CD14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CC1091-9171-4ECE-B65C-743A8CB49E37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CC1091-9171-4ECE-B65C-743A8CB49E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CC1091-9171-4ECE-B65C-743A8CB49E37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF611687-1056-599E-E990-0F064C0B98FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF611687-1056-599E-E990-0F064C0B98FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF611687-1056-599E-E990-0F064C0B98FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B86A46B0-0016-D6CD-4217-7375879CFAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B86A46B0-0016-D6CD-4217-7375879CFAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B86A46B0-0016-D6CD-4217-7375879CFAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B86A46B0-0016-D6CD-4217-7375879CFAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E7A6FAD-577E-D3B7-049F-FD3C6AC51C60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E7A6FAD-577E-D3B7-049F-FD3C6AC51C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E7A6FAD-577E-D3B7-049F-FD3C6AC51C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E7A6FAD-577E-D3B7-049F-FD3C6AC51C60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AFECFC2-825B-A61F-0564-FCF2A7C38A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AFECFC2-825B-A61F-0564-FCF2A7C38A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AFECFC2-825B-A61F-0564-FCF2A7C38A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AFECFC2-825B-A61F-0564-FCF2A7C38A28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93F29D2B-4A58-4375-B84A-057E3444944D}
+	EndGlobalSection
+EndGlobal
