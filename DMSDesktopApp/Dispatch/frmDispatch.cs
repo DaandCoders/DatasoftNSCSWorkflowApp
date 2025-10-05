@@ -16,6 +16,8 @@ using System.Data;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using static DC.DMS.Services.Enum.WorkflowEnums;
+using System.Linq; // added for filtering
+using System.IO; // for File.Exists
 
 
 namespace DMS.DesktopApp.Dispatch
@@ -163,11 +165,30 @@ namespace DMS.DesktopApp.Dispatch
 
                 foreach (var subDirectoryDetail in subDirectoryList)
                 {
-                    var imageList = _db.ImageFileDetails
-                        .Where(x => x.SubDirectoryID == Convert.ToInt32(subDirectoryDetail.ID))
+                    var allImagePaths = _db.ImageFileDetails
+                        .Where(x => x.SubDirectoryID == subDirectoryDetail.ID && x.Flag != Flag.Delete)
                         .OrderBy(x => x.SerialNo)
                         .Select(x => x.Path.Replace("Raw", "Clean"))
                         .ToList();
+
+                    // If no images at all, log and skip this subdirectory
+                    if (allImagePaths.Count == 0)
+                    {
+                        Log.WriteLog.Create("ErrorLog", $"Log DateTime: {DateTime.Now}, SubDir:{subDirectoryDetail.Name}, Error: No images found.", out _);
+                        continue; // skip to next subdirectory
+                    }
+
+                    // Check every image exists; if ANY missing => log and skip this subdirectory entirely
+                    var missing = allImagePaths.Where(p => !File.Exists(p)).ToList();
+                    if (missing.Count > 0)
+                    {
+                        string missingSample = string.Join(", ", missing.Take(10));
+                        Log.WriteLog.Create("ErrorLog", $"Log DateTime: {DateTime.Now}, SubDir:{subDirectoryDetail.Name}, Missing {missing.Count} image(s). Sample: {missingSample}. Skipped.", out _);
+                        continue; // skip processing this subdirectory
+                    }
+
+                    // All images present
+                    var imageList = allImagePaths; // safe to pass original order
 
                     var subDirectoryName = subDirectoryDetail.Name;
                     var pdfFileName = subDirectoryName;
@@ -175,107 +196,88 @@ namespace DMS.DesktopApp.Dispatch
                     string currentScanDate;
                     string pattern = @"\d{2}-\d{2}-\d{4}";
                     Match match = Regex.Match(subDirectoryDetail.Path, pattern);
-                    if (match.Success)
-                    {
-                        currentScanDate = match.Value;
-                    }
-                    else
-                    {
-                        currentScanDate = scanDate.ToString("dd-MM-yyyy");
-                    }
+                    currentScanDate = match.Success ? match.Value : scanDate.ToString("dd-MM-yyyy");
 
-                    string departmentFileName = Path.GetFileName(Path.GetDirectoryName(subDirectoryDetail.Path)).Replace(" ","");
+                    string departmentFileName = Path.GetFileName(Path.GetDirectoryName(subDirectoryDetail.Path)).Replace(" ", "");
 
-                    var destinationPath = Path.Combine(new string[] {
+                    var destinationPath = Path.Combine(
                         Properties.Settings.Default.DriveLetter + ":\\",
                         "PDF",
                         currentScanDate,
                         departmentFileName,
-                        subDirectoryName });
+                        subDirectoryName);
 
-                    if (imageList.Count > 0)
+                    Directory.CreateDirectory(destinationPath);
+                    string destinationFilePath = Path.Combine(destinationPath, pdfFileName);
+
+                    var pdfResult = new ImagesToSearchablePdf().CreateSearchablePdf(
+                        imageList,
+                        "Devanagari",
+                        destinationPath,
+                        pdfFileName,
+                        Application.StartupPath);
+
+                    if (pdfResult.pageCount > 0)
                     {
-                        Directory.CreateDirectory(destinationPath);
-                        string destinationFilePath = Path.Combine(destinationPath, pdfFileName);
-                        var pdfResult = new ImagesToSearchablePdf().CreateSearchablePdf(
-                            imageList,
-                            "Devanagari",
-                            destinationPath,
-                            pdfFileName,
-                            Application.StartupPath);
+                        await FileDetailsHelper.FilesStatusChangeAfterDispatchAsync(subDirectoryDetail.ID, fileDirectoryID, Status.Dispatched);
 
-                        if (pdfResult.pageCount > 0)
-                        {
-                            await FileDetailsHelper.FilesStatusChangeAfterDispatchAsync(subDirectoryDetail.ID, fileDirectoryID, Status.Dispatched);
-
-                            // Avoid duplicate dispatch entries for the same SubDirectory and path
-                            bool exists = _db.DispatchedData.Any(x => x.SubDirectoryID == subDirectoryDetail.ID && x.FilePath == destinationFilePath + ".pdf");
-                            if (!exists)
-                            {
-                                try
-                                {
-                                    var currentDateTime = await serverDateTimeHelper.GetCurrentDateTimeAsync();
-                                    DispatchData dispatchData = new DispatchData
-                                    {
-                                        SubDirectoryID = subDirectoryDetail.ID,
-                                        FileName = departmentFileName,
-                                        FilePath = destinationFilePath + ".pdf",
-                                        PageCount = pdfResult.pageCount,
-                                        CreateBy = AppUser.ID,
-                                        UpdateBy = AppUser.ID,
-                                        UpdateDateTime = currentDateTime,
-                                        CreateDateTime = currentDateTime
-                                    };
-                                    _db.DispatchedData.Add(dispatchData);
-                                    _db.SaveChanges();
-                                }
-                                catch (Exception ex)
-                                {
-                                    string messageError = $"Error:{ex.Message} {Environment.NewLine} Inner Eerror: {ex.InnerException?.Message}";
-                                    Log.WriteLog.Create("ErrorLog", messageError, out string _);
-                                    return;
-                                }
-                            }
-
-                            await FileDetailsHelper.SubDirectoryDispatchDoneAsync(subDirectoryDetail.ID);
-                        }
-                        else
+                        bool exists = _db.DispatchedData.Any(x => x.SubDirectoryID == subDirectoryDetail.ID && x.FilePath == destinationFilePath + ".pdf");
+                        if (!exists)
                         {
                             try
                             {
-                                ErrorLog errorLogs = new ErrorLog
+                                var currentDateTime = await serverDateTimeHelper.GetCurrentDateTimeAsync();
+                                DispatchData dispatchData = new DispatchData
                                 {
-                                    DirectoryID = DirectoryID,
-                                    CaseDirectoryID = fileDirectoryID,
                                     SubDirectoryID = subDirectoryDetail.ID,
-                                    CreatedBy = AppUser.ID,
-                                    CreatedDateTime = await serverDateTimeHelper.GetCurrentDateTimeAsync(),
-                                    FileName = pdfFileName,
-                                    FilePath = destinationPath
+                                    FileName = departmentFileName,
+                                    FilePath = destinationFilePath + ".pdf",
+                                    PageCount = pdfResult.pageCount,
+                                    CreateBy = AppUser.ID,
+                                    UpdateBy = AppUser.ID,
+                                    UpdateDateTime = currentDateTime,
+                                    CreateDateTime = currentDateTime
                                 };
-                                _db.Add(errorLogs);
+                                _db.DispatchedData.Add(dispatchData);
                                 _db.SaveChanges();
-
-                                string messageError = string.Format($"Log DateTime: {DateTime.Now}, File Name:{pdfFileName}, Error Message:{pdfResult.ErrorMessage}");
-                                Log.WriteLog.Create("ErrorLog", messageError, out string _);
                             }
                             catch (Exception ex)
                             {
-                                string messageError = string.Format($"Log DateTime: {DateTime.Now}, File Name:{pdfFileName}, Error Message:{ex.Message}");
-                                Log.WriteLog.Create("ErrorLog", messageError, out string _);
+                                Log.WriteLog.Create("ErrorLog", $"Error:{ex.Message} Inner:{ex.InnerException?.Message}", out _);
+                                continue; // skip to next subdirectory
                             }
                         }
+
+                        await FileDetailsHelper.SubDirectoryDispatchDoneAsync(subDirectoryDetail.ID);
                     }
                     else
                     {
-                        string messageError = string.Format($"Log DateTime: {DateTime.Now}, File Name:{pdfFileName}, Error Message:{"images not found."}");
-                        Log.WriteLog.Create("ErrorLog", messageError, out string _);
+                        try
+                        {
+                            ErrorLog errorLogs = new ErrorLog
+                            {
+                                DirectoryID = DirectoryID,
+                                CaseDirectoryID = fileDirectoryID,
+                                SubDirectoryID = subDirectoryDetail.ID,
+                                CreatedBy = AppUser.ID,
+                                CreatedDateTime = await serverDateTimeHelper.GetCurrentDateTimeAsync(),
+                                FileName = pdfFileName,
+                                FilePath = destinationPath
+                            };
+                            _db.Add(errorLogs);
+                            _db.SaveChanges();
+
+                            Log.WriteLog.Create("ErrorLog", $"Log DateTime: {DateTime.Now}, File Name:{pdfFileName}, Error Message:{pdfResult.ErrorMessage}", out _);
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.WriteLog.Create("ErrorLog", $"Log DateTime: {DateTime.Now}, File Name:{pdfFileName}, Error Message:{ex.Message}", out _);
+                        }
                     }
                 }
 
                 await FileDetailsHelper.FileDirectoryDispatchDoneAsync(fileDirectoryID);
 
-                // progress per processed file directory
                 count++;
                 double value = ((double)count / totalRecords) * 100;
                 percentage = Convert.ToInt32(Math.Round(value, 0));
@@ -370,6 +372,20 @@ namespace DMS.DesktopApp.Dispatch
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            // Trigger filtering manually when user clicks Search
+            if (cobBatch.SelectedValue == null || string.IsNullOrEmpty(cobBatch.SelectedValue.ToString()))
+            {
+                MessageBox.Show(this, "Please select batch first.", Default.Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (DateTime.TryParse(cobBatch.SelectedValue.ToString(), out var scanDate))
+            {
+                LoadFiles(scanDate); // LoadFiles already applies txtSearch filter
+            }
+        }
+
         private async void LoadFiles(DateTime scanDate)
         {
             await using var _db = await _dbContext.CreateDbContextAsync();
@@ -377,6 +393,16 @@ namespace DMS.DesktopApp.Dispatch
                 .Select(x => x.ID).FirstOrDefaultAsync();
             DirectoryID = directoryID;
             var fileList = await new FileDirectoryHelper(_dbContext, _cache, _translationService).GetFileDirectories(directoryID, CallingFor.Dipatch);
+
+            // Apply search filter if any text entered
+            var searchText = txtSearch?.Text?.Trim();
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                fileList = fileList
+                    .Where(f => !string.IsNullOrEmpty(f.Name) && f.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+
             if (fileList.Count > 0)
             {
                 lstFiles.DataSource = null;
@@ -422,6 +448,42 @@ namespace DMS.DesktopApp.Dispatch
         public int? UpdateByClientID { get; set; }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

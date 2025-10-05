@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using System.Threading.Tasks;
 using static DC.DMS.Services.Enum.WorkflowEnums;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DMS.DesktopApp.Helper
 {
@@ -104,23 +105,28 @@ namespace DMS.DesktopApp.Helper
         {
             await using var _db = await _dbContext.CreateDbContextAsync();
 
-            FileDirectory? fileDirectory = new FileDirectory();
+            // Mirror decompiled logic
             var subDirectoryList = await _db.SubDirectories
                 .Where(x => x.FileDirectoryID == fileDirectoryID)
                 .Select(x => x.Status)
                 .ToListAsync();
-            if (subDirectoryList.Any(x => x != status))
+
+            // Decompiled condition: if count != 2 AND all are Scanned then short‑circuit success
+            if (subDirectoryList.Count != 2 && subDirectoryList.All(x => x == Status.Scanned))
             {
                 return (true, null);
             }
 
             var fileDetail = await _db.FileDetails
-                .Where(x => x.ID == fileDetailID).Select(x => x).FirstOrDefaultAsync();
+                .Where(x => x.ID == fileDetailID)
+                .Select(x => x)
+                .FirstOrDefaultAsync();
 
             if (fileDetail == null)
             {
                 return (false, "file metadata not found");
             }
+
             fileDetail.Status = status;
             fileDetail.UpdatedBy = AppUser.ID;
             fileDetail.UpdatedDateTime = await serverDateTimeHelper.GetCurrentDateTimeAsync();
@@ -465,7 +471,7 @@ namespace DMS.DesktopApp.Helper
         {
             await using var _db = await _dbContext.CreateDbContextAsync();
             string? errorMessage = null;
-            
+
             FileDirectory fileDirectory = _db.FileDirectories
                 .Where(x => x.ID == fileDirectoryID && x.Flag != Flag.Delete).FirstOrDefault();
 
@@ -493,7 +499,7 @@ namespace DMS.DesktopApp.Helper
                     fileDetails.Result.Status = Status.Dispatched;
                     _db.FileDetails.Attach(fileDetails.Result);
                     _db.Entry(fileDetails.Result).Property(x => x.Status).IsModified = true;
-                   await  _db.SaveChangesAsync();
+                    await _db.SaveChangesAsync();
                 }
 
                 return true;
@@ -585,50 +591,113 @@ namespace DMS.DesktopApp.Helper
 
         }
 
-        public int ReceivedFilesCount()
+        public int ReceivedFilesCount(int? userID=null , Status? status=null)
         {
             using var _db = _dbContext.CreateDbContext();
-            int c = _db.FileDetails.AsNoTracking()
-                .Where(x => x.Status == Status.FileReceive && x.Flag != Flag.Delete)
-                .Count();
-            return c;
+            var query = _db.FileDetails.AsNoTracking()
+                .Where(x => x.Flag != Flag.Delete);
+
+            if (userID.HasValue)
+            {
+                switch (status)
+                {
+
+                    case Status.Dispatched:
+                        query = query.Where(x => x.CreateByUser.ID == userID.Value && x.Status==Status.Dispatched);
+                        break;
+                    case Status.FileReceive:
+                        query = query.Where(x => x.CreateByUser.ID == userID.Value && x.Status == Status.FileReceive);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                query.Where(x => x.Status == Status.FileReceive);
+            }
+
+                return query.Count();
+        }
+        private int DispatchCount(int? userID = null, Status? status = null)
+        {
+            using var _db = _dbContext.CreateDbContext();
+            var query = _db.DispatchedData.AsNoTracking()
+                .Where(x => x.Flag != Flag.Delete);
+
+            if (userID.HasValue)
+            {
+                query = query.Where(x => x.CreateByUser.ID == userID.Value && x.Status == Status.Dispatched);
+            }
+            else
+            {
+                query.Where(x => x.Status == Status.Dispatched);
+            }
+
+            return query.Count();
         }
 
-        public int ScannedFilesCount()
+        // Generic helper for FileDirectory status counts with optional user filter (by FileDetail creator)
+        private int CountFileDirectories(Status status, int? userID)
         {
             using var _db = _dbContext.CreateDbContext();
-            return _db.FileDirectories.AsNoTracking()
-                .Where(x => x.Status == Status.Scanned && x.Flag != Flag.Delete)
-                .Select(x => x.ID)
-                .Count();
+
+            var query = _db.FileDirectories.AsNoTracking()
+                .Where(x => x.Flag != Flag.Delete);
+
+            if (userID.HasValue)
+            {
+                // Filter by creator of underlying FileDetail
+                switch (status)
+                {
+                    
+                    case Status.QCDone:
+                        query = query.Where(x => x.QCCreateByUser.ID == userID.Value);
+                        break;
+                    
+                    case Status.Dispatched:
+                        break;
+                    case Status.FileReceive:
+                        query = query.Where(x => x.CreateByUser.ID == userID.Value);
+                        break;
+                    case Status.Scanned:
+                        query = query.Where(x => x.ScanCreateByUser.ID == userID.Value);
+                        break;
+                    
+                    default:
+                        break;
+                }
+                
+            }
+            else
+            {
+                switch (status)
+                {
+
+                    case Status.QCDone:
+                        query = query.Where(x => x.Status==Status.QCDone);
+                        break;
+
+                    case Status.Dispatched:
+                        break;
+                    case Status.FileReceive:
+                        query = query.Where(x => x.Status == Status.FileReceive);
+                        break;
+                    case Status.Scanned:
+                        query = query.Where(x => x.Status == Status.Scanned);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+                return query.Count();
         }
 
-        public int QCFilesCount()
-        {
-            using var _db = _dbContext.CreateDbContext();
-            return _db.FileDirectories.AsNoTracking()
-                .Where(x => x.Status == Status.QCDone && x.Flag != Flag.Delete)
-                .Select(x => x.ID)
-                .Count();
-        }
-
-        public int DispatchFilesCount()
-        {
-            using var _db = _dbContext.CreateDbContext();
-            return _db.FileDirectories.AsNoTracking()
-                .Where(x => x.Status == Status.Dispatched && x.Flag != Flag.Delete)
-                .Select(x => x.ID)
-                .Count();
-        }
-
-        public int ClientQCFilesCount()
-        {
-            using var _db = _dbContext.CreateDbContext();
-            return _db.FileDirectories.AsNoTracking()
-                .Where(x => x.Status == Status.QCDoneByClient && x.Flag != Flag.Delete)
-                .Select(x => x.ID)
-                .Count();
-        }
+        public int ScannedFilesCount(int? userID = null) => CountFileDirectories(Status.Scanned, userID);
+        public int QCFilesCount(int? userID = null) => CountFileDirectories(Status.QCDone, userID);
+        public int DispatchFilesCount(int? userID = null) => DispatchCount(userID, Status.Dispatched);
+        public int ClientQCFilesCount(int? userID = null) => CountFileDirectories(Status.QCDoneByClient, userID);
     }
 }
 

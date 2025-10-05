@@ -1101,7 +1101,7 @@ namespace DMS.DesktopApp.Scan
 
             MessageBox.Show(this, "Case No: " + txtCaseNo.Text + " submitted successfully!", Default.Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
           
-            await UpdateCaseDetailsAsync();
+            //await UpdateCaseDetailsAsync();
            
             await LoadData();
            

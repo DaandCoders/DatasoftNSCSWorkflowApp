@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using System.Data;
 using System.Reflection;
+using ClosedXML.Excel; // Added for Excel export
 
 namespace DMS.DesktopApp.Reports
 {
@@ -96,68 +97,70 @@ namespace DMS.DesktopApp.Reports
 
         private void btnExportReport_Click(object sender, EventArgs e)
         {
-            if (dataGridView.Rows.Count > 0)
+            if (dataGridView.Rows.Count == 0)
             {
-                DataTable dt = new DataTable();
-                foreach (DataGridViewColumn column in dataGridView.Columns)
+                MessageBox.Show("No data to export.");
+                return;
+            }
+
+            using var sfd = new SaveFileDialog
+            {
+                Title = "Export Report",
+                Filter = "Excel Workbook (*.xlsx)|*.xlsx",
+                FileName = $"DayReport_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx"
+            };
+
+            if (sfd.ShowDialog() != DialogResult.OK)
+                return;
+
+            try
+            {
+                using var wb = new XLWorkbook();
+                var ws = wb.Worksheets.Add("Report");
+
+                // Headers
+                int colIndex = 1;
+                foreach (DataGridViewColumn col in dataGridView.Columns)
                 {
-                    dt.Columns.Add(column.HeaderText); //, column.ValueType
+                    ws.Cell(1, colIndex).Value = col.HeaderText;
+                    ws.Cell(1, colIndex).Style.Font.Bold = true;
+                    ws.Cell(1, colIndex).Style.Fill.BackgroundColor = XLColor.LightGray;
+                    colIndex++;
                 }
+
+                // Rows
+                int rowIndex = 2;
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    if (dataGridView.Rows.Count - 1 > row.Index)
+                    if (row.IsNewRow) continue;
+                    for (int c = 0; c < dataGridView.Columns.Count; c++)
                     {
-                        dt.Rows.Add();
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            dt.Rows[dt.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
-                        }
+                        var val = row.Cells[c].Value;
+                        if (val is DateTime dtVal)
+                            ws.Cell(rowIndex, c + 1).Value = dtVal;
+                        else if (val is int intVal)
+                            ws.Cell(rowIndex, c + 1).Value = intVal;
+                        else if (val is long longVal)
+                            ws.Cell(rowIndex, c + 1).Value = longVal;
+                        else if (val is double dblVal)
+                            ws.Cell(rowIndex, c + 1).Value = dblVal;
+                        else if (val is decimal decVal)
+                            ws.Cell(rowIndex, c + 1).Value = decVal;
+                        else if (val is bool boolVal)
+                            ws.Cell(rowIndex, c + 1).Value = boolVal;
+                        else
+                            ws.Cell(rowIndex, c + 1).Value = val?.ToString();
                     }
+                    rowIndex++;
                 }
-                // string folderPath = Properties.Settings.Default.DriveLetter + ":" + "\\Reports";
-                //if (!Directory.Exists(folderPath))
-                //{
-                //    Directory.CreateDirectory(folderPath);
-                //}
-                //bool result = new ExportReport(dt).Export(folderPath, cobWorkType.Text + "DayReport_" + DateTime.Now.ToString("dd-MM-yyyy"));
-                //if (result)
-                //{
-                //    MessageBox.Show(this, "Day report exported successfully!", Default.Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    return;
-                //}
-                //else
-                //{
-                //    MessageBox.Show(this, "Day report export failed!", Default.Caption, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                //    return;
-                //}
 
-                //try
-                //{
-                //Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
-                //Workbook workbook = excelApp.Workbooks.Add(Type.Missing);
-                //Worksheet worksheet = null;
-                //worksheet = (Worksheet)workbook.Sheets["Sheet1"];
-                //worksheet = (Worksheet)workbook.ActiveSheet;
-                //worksheet.Name = "HCWorkflow";
-                //for (int i = 1; i < dataGridView.Columns.Count + 1; i++)
-                //{
-                //    worksheet.Cells[1, i] = dataGridView.Columns[i - 1].HeaderText;
-                //}
-                //for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
-                //{
-                //    for (int j = 0; j < dataGridView.Columns.Count; j++)
-                //    {
-                //        worksheet.Cells[i + 2, j + 1] = dataGridView.Rows[i].Cells[j].Value.ToString();
-                //    }
-                //}
-                //excelApp.Columns.AutoFit();
-                //excelApp.Visible = true;
-                //}
-                //catch (Exception ex)
-                //{
-                //    throw;
-                //}
-                // Cursor = Cursors.Default;
+                ws.Columns().AdjustToContents();
+                wb.SaveAs(sfd.FileName);
+                MessageBox.Show("Report exported successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Export failed: " + ex.Message);
             }
         }
 
@@ -238,7 +241,7 @@ namespace DMS.DesktopApp.Reports
                         switch (cobWorkType.SelectedIndex)
                         {
                             case 0:
-                                //  dt = db.Select("select a.scancreatedatetime as 'Date Time', a.Name as 'File Name', b.filecount as 'Scanned Page Count', cd.barcode as 'Barcode' from casedirectories a inner join subdirectories b on a.id = b.casedirectoryid inner join users c on a.scancreateby = c.id inner join casedetails cd on cd.id=c.casedetailid where c.username = '" + operatorName + "' and cast(a.scancreatedatetime as date) between '" + dtpDateFrom.Value.ToString("yyyy-MM-dd") + "%' and '" + dtpDateTo.Value.ToString("yyyy-MM-dd") + "%' order by a.scancreatedatetime");
+                                //  dt = db.Select("select a.scancreatedatetime as 'Date Time', a.Name as 'File Name', b.filecount as 'Scanned Page Count', cd.barcode as 'Barcode' from casedirectories a inner join subdirectories b on a.id = b.casedirectoryid inner join users c on a.scancreateby = c.id inner join casedetails cd on cd.id=casedetailid where c.username = '" + operatorName + "' and cast(a.scancreatedatetime as date) between '" + dtpDateFrom.Value.ToString("yyyy-MM-dd") + "%' and '" + dtpDateTo.Value.ToString("yyyy-MM-dd") + "%' order by a.scancreatedatetime");
                                 break;
                             case 1:
                                 // dt = db.Select("select a.createdatetime as 'Date Time', CONCAT(a.caseyear,'_', Replace(b.name, '.','-'), '_', a.casenumber) as 'File Name', a.barcode as 'Barcode' from casedetails a inner join casetypes b on a.casetypeid=b.id inner join users c on a.createby=c.id where c.username = '" + operatorName + "' and cast(a.createdatetime as date) between '" + dtpDateFrom.Value.ToString("yyyy-MM-dd") + "%' and '" + dtpDateTo.Value.ToString("yyyy-MM-dd") + "%' order by a.createby");

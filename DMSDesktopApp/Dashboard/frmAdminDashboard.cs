@@ -248,8 +248,7 @@ namespace DMS.DesktopApp.Dashboard
 
         private void menDayReport_Click(object sender, EventArgs e)
         {
-            frmDayReport dayReport = new frmDayReport(_dbContext, _cache, _translationService);
-            dayReport.ShowDialog();
+
         }
 
         private void menMetadataReport_Click(object sender, EventArgs e)
@@ -380,6 +379,29 @@ namespace DMS.DesktopApp.Dashboard
         private void btnExist_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshCount();
+        }
+
+        private void menClient_Click(object sender, EventArgs e)
+        {
+            frmClientReport frmClientReport = new frmClientReport(_dbContext, _cache, _translationService);
+            frmClientReport.ShowDialog();
+        }
+
+        private void operatorReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDayReport dayReport = new frmDayReport(_dbContext, _cache, _translationService);
+            dayReport.ShowDialog();
+        }
+
+        private void barcodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCheckBarcodeDetails checkBarcodeDetails = new frmCheckBarcodeDetails(_dbContext, _cache, _translationService);
+            checkBarcodeDetails.ShowDialog();
         }
     }
 }

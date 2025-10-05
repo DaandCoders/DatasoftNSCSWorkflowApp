@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Security;
 using System.Configuration;
+using System.Drawing;
 
 namespace DMSDesktopApp
 {
@@ -42,6 +43,8 @@ namespace DMSDesktopApp
                     Application.SetHighDpiMode(HighDpiMode.SystemAware);
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
+                    // Set a global default font for all WinForms controls
+                    Application.SetDefaultFont(new Font("Segoe UI", 10f, FontStyle.Regular, GraphicsUnit.Point));
                     //Application.Run(new frmSplashScreen(
                     //    services.GetRequiredService<ApplicationDbContext>(),
                     //   services.GetRequiredService<IMemoryCache>(),
@@ -78,7 +81,7 @@ namespace DMSDesktopApp
                  options.UseMySql(
                      connectionString: decryptedConnectionString,
                      serverVersion: ServerVersion.AutoDetect(decryptedConnectionString),
-                     mySqlOptions => mySqlOptions.CommandTimeout(300) // Set timeout to 120 seconds
+                     mySqlOptions => mySqlOptions.CommandTimeout(3000) // Set timeout to 120 seconds
                  ));
                  services.AddMemoryCache();
                  services.AddScoped<ITranslationService, TranslationService>();

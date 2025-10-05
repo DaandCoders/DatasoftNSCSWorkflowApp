@@ -64,7 +64,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(20, 56);
             label1.Name = "label1";
-            label1.Size = new Size(53, 15);
+            label1.Size = new Size(58, 17);
             label1.TabIndex = 5;
             label1.Text = "File Type";
             // 
@@ -81,7 +81,7 @@
             // cobStatus
             // 
             cobStatus.FormattingEnabled = true;
-            cobStatus.Items.AddRange(new object[] { "Open For Scanning", "Open For Operator QC", "Open For Department QC" });
+            cobStatus.Items.AddRange(new object[] { "Open For Scanning", "Open For Operator QC", "Open For Department QC", "Open For Dispatch" });
             cobStatus.Location = new Point(91, 83);
             cobStatus.Margin = new Padding(3, 2, 3, 2);
             cobStatus.Name = "cobStatus";
@@ -94,7 +94,7 @@
             lblFolderDetails.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             lblFolderDetails.Location = new Point(20, 65);
             lblFolderDetails.Name = "lblFolderDetails";
-            lblFolderDetails.Size = new Size(0, 15);
+            lblFolderDetails.Size = new Size(0, 20);
             lblFolderDetails.TabIndex = 2;
             // 
             // txtFileName
@@ -110,7 +110,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(13, 21);
             label2.Name = "label2";
-            label2.Size = new Size(60, 15);
+            label2.Size = new Size(66, 17);
             label2.TabIndex = 0;
             label2.Text = "File Name";
             // 
@@ -119,7 +119,7 @@
             lblStatus.AutoSize = true;
             lblStatus.Location = new Point(34, 86);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(39, 15);
+            lblStatus.Size = new Size(43, 17);
             lblStatus.TabIndex = 0;
             lblStatus.Text = "Status";
             // 
@@ -128,10 +128,10 @@
             btnChangeStatus.BackColor = Color.RoyalBlue;
             btnChangeStatus.FlatStyle = FlatStyle.Popup;
             btnChangeStatus.ForeColor = Color.White;
-            btnChangeStatus.Location = new Point(342, 157);
+            btnChangeStatus.Location = new Point(329, 157);
             btnChangeStatus.Margin = new Padding(3, 2, 3, 2);
             btnChangeStatus.Name = "btnChangeStatus";
-            btnChangeStatus.Size = new Size(106, 22);
+            btnChangeStatus.Size = new Size(104, 33);
             btnChangeStatus.TabIndex = 1;
             btnChangeStatus.Text = "Change Status";
             btnChangeStatus.UseVisualStyleBackColor = false;
@@ -142,10 +142,10 @@
             btnClose.BackColor = Color.IndianRed;
             btnClose.FlatStyle = FlatStyle.Popup;
             btnClose.ForeColor = Color.White;
-            btnClose.Location = new Point(454, 157);
+            btnClose.Location = new Point(441, 157);
             btnClose.Margin = new Padding(3, 2, 3, 2);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(82, 22);
+            btnClose.Size = new Size(104, 33);
             btnClose.TabIndex = 2;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = false;
@@ -156,7 +156,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(558, 190);
+            ClientSize = new Size(558, 201);
             Controls.Add(btnClose);
             Controls.Add(btnChangeStatus);
             Controls.Add(groupBox1);

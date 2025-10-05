@@ -200,12 +200,6 @@ namespace DMS.DesktopApp.Dashboard
                         LabelPoint = labelPoint
                     }
                 };
-            //lblTotalFileReceived.Text = "0" + (await FileDetailHelper.ReceivedFilesCountAsync());
-            //lblTotalFileScanned.Text = "0" + (await FileDetailHelper.ScannedFilesCountAsync());
-            //lblTotalFileQC.Text = "0" + (await FileDetailHelper.QCFilesCountAsync());
-            //lblTotalFileClassified.Text = "0" + (await FileDetailHelper.ReceivedFilesCountAsync());
-            //lblTotalFileDispatched.Text = "0" + (await FileDetailHelper.DispatchFilesCountAsync());
-            //lblTotalFileQCByCLient.Text = "0" + (await FileDetailHelper.ClientQCFilesCountAsync());
             pieChart1.LegendLocation = LegendLocation.Bottom;
             lblUserName.Text=AppUser.CurrentUserName;
             Text = $"DMS Workflow | User Dashboard v{Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
@@ -232,12 +226,12 @@ namespace DMS.DesktopApp.Dashboard
         {
             try
             {
-                ReceivedFilesCount = (FileDetailHelper.ReceivedFilesCount());
-                ScannedFilesCount = (FileDetailHelper.ScannedFilesCount());
-                QCFilesCount = (FileDetailHelper.QCFilesCount());
+                ReceivedFilesCount = (FileDetailHelper.ReceivedFilesCount(AppUser.ID, Status.FileReceive));
+                ScannedFilesCount = (FileDetailHelper.ScannedFilesCount(AppUser.ID));
+                QCFilesCount = (FileDetailHelper.QCFilesCount(AppUser.ID));
                 //ClassifiedFilesCount = FileDetailHelper.ClassifiedFilesCount();
-                DispatchFilesCount = FileDetailHelper.DispatchFilesCount();
-                ClientQCFilesCount = ( FileDetailHelper.ClientQCFilesCount());
+                DispatchFilesCount = FileDetailHelper.DispatchFilesCount(AppUser.ID);
+                //ClientQCFilesCount = ( FileDetailHelper.ClientQCFilesCount(AppUser.ID));
             }
             catch (Exception ex)
             {

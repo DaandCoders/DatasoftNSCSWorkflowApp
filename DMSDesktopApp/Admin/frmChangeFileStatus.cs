@@ -85,41 +85,32 @@ namespace DMS.DesktopApp.Admin
                                 }
                             }
 
-                            // Update SubDirectory
+                            // Delete SubDirectory
+
                             var subDir = await db.SubDirectories
                                 .FirstOrDefaultAsync(x => x.FileDirectoryID == fileDirectoryID && x.ID == subDirId);
 
                             if (subDir != null)
                             {
-                                subDir.Status = WorkflowEnums.Status.FileReceive;
-                                subDir.QCCreateBy = null;
-                                subDir.QCUpdateBy = null;
-                                subDir.CreatedDateTime = null;
-                                subDir.QCUpdateDateTime = null;
+                                db.SubDirectories.Remove(subDir);
                                 await db.SaveChangesAsync();
                             }
                             else
                             {
-                                MessageBox.Show("No File Found for Opening in QC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                MessageBox.Show("No file found for opening in scan", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             }
 
-                            // Update FileDirectory
+
+                            // Delete FileDirectory
                             var scanFileDirectory = await db.FileDirectories
                                 .FirstOrDefaultAsync(x => x.ID == fileDirectoryID);
 
-                            if (scanFileDirectory != null)
+                            // Update Status File Details
+                            var fileDetails = await db.FileDetails.Where(x => x.ID == scanFileDirectory.FileDetailID).FirstOrDefaultAsync();
+                            if (fileDetails != null)
                             {
-                                scanFileDirectory.Status = WorkflowEnums.Status.FileReceive;
-                                scanFileDirectory.QCCreateBy = null;
-                                scanFileDirectory.QCUpdateBy = null;
-                                scanFileDirectory.CreatedDateTime = null;
-                                scanFileDirectory.QCUpdateDateTime = null;
+                                fileDetails.Status = WorkflowEnums.Status.FileReceive;
                                 await db.SaveChangesAsync();
-                                MessageBox.Show("File Status Changed Sucessfully and File Opened For QC!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            }
-                            else
-                            {
-                                MessageBox.Show("No File Found for Opening in QC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             }
 
                             // Update DCSDirectory
@@ -130,6 +121,18 @@ namespace DMS.DesktopApp.Admin
                             {
                                 scanDirectory.Status = WorkflowEnums.Status.FileReceive;
                                 await db.SaveChangesAsync();
+                            }
+
+                            if (scanFileDirectory != null)
+                            {
+                                db.FileDirectories.Remove(scanFileDirectory);
+                                await db.SaveChangesAsync();
+                                MessageBox.Show("File status changed successfully and file opened for scan!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No file found for opening in Scan", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                return;
                             }
                         }
                         catch (Exception ex)
@@ -205,84 +208,84 @@ namespace DMS.DesktopApp.Admin
                         }
                         break;
 
-                    // Open for Department QC
+                    // Open for dispatch
                     case 3:
-                    {
-                        var dispatchData = await db.DispatchedData
-                            .FirstOrDefaultAsync(x => x.SubDirectoryID == subDirId);
-
-                        var pdfFile = dispatchData?.FilePath;
-                        if (!string.IsNullOrWhiteSpace(pdfFile))
                         {
-                            try
-                            {
-                                if (File.Exists(pdfFile)) File.Delete(pdfFile);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                                return;
-                            }
-                        }
+                            var dispatchData = await db.DispatchedData
+                                .FirstOrDefaultAsync(x => x.SubDirectoryID == subDirId);
 
-                        if (dispatchData != null)
-                        {
-                            db.DispatchedData.Remove(dispatchData);
-                            try
+                            var pdfFile = dispatchData?.FilePath;
+                            if (!string.IsNullOrWhiteSpace(pdfFile))
                             {
-                                await db.SaveChangesAsync();
+                                try
+                                {
+                                    if (File.Exists(pdfFile)) File.Delete(pdfFile);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                    return;
+                                }
                             }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                                return;
-                            }
-                        }
 
-                        var fd = await db.FileDirectories
-                            .FirstOrDefaultAsync(x => x.ID == fileDirectoryID);
+                            if (dispatchData != null)
+                            {
+                                db.DispatchedData.Remove(dispatchData);
+                                try
+                                {
+                                    await db.SaveChangesAsync();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                    return;
+                                }
+                            }
 
-                        if (fd != null)
-                        {
-                            fd.Status = WorkflowEnums.Status.QCDone;
-                            fd.QCCreateBy = null;
-                            fd.QCUpdateBy = null;
-                            fd.CreatedDateTime = null;
-                            fd.QCUpdateDateTime = null;
-                            try
-                            {
-                                await db.SaveChangesAsync();
-                                MessageBox.Show("File Status Changed Sucessfully and File Opened For QC!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("No File Found for Opening in QC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        }
+                            var fd = await db.FileDirectories
+                                .FirstOrDefaultAsync(x => x.ID == fileDirectoryID);
 
-                        var directory = await db.Directories
-                            .FirstOrDefaultAsync(x => x.ID == fileDirectoryID);
+                            if (fd != null)
+                            {
+                                fd.Status = WorkflowEnums.Status.QCDone;
+                                fd.QCCreateBy = null;
+                                fd.QCUpdateBy = null;
+                                fd.CreatedDateTime = null;
+                                fd.QCUpdateDateTime = null;
+                                try
+                                {
+                                    await db.SaveChangesAsync();
+                                    MessageBox.Show("File Status Changed Sucessfully and File Opened For QC!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("No File Found for Opening in QC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            }
 
-                        if (directory != null)
-                        {
-                            directory.Status = WorkflowEnums.Status.QCDone;
-                            try
+                            var directory = await db.Directories
+                                .FirstOrDefaultAsync(x => x.ID == fileDirectoryID);
+
+                            if (directory != null)
                             {
-                                await db.SaveChangesAsync();
+                                directory.Status = WorkflowEnums.Status.QCDone;
+                                try
+                                {
+                                    await db.SaveChangesAsync();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                    return;
+                                }
                             }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                                return;
-                            }
+                            break;
                         }
-                        break;
-                    }
 
                     default:
                         break;

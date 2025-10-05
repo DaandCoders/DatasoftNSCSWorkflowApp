@@ -2,7 +2,7 @@
 
 namespace DMS.DesktopApp.Reports
 {
-    partial class frmDayReport
+    partial class frmClientReport
     {
         /// <summary>
         /// Required designer variable.
@@ -30,22 +30,16 @@ namespace DMS.DesktopApp.Reports
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             dtpDateFrom = new DateTimePicker();
             label1 = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             radSingleDate = new RadioButton();
             radBetweenDate = new RadioButton();
-            cobWorkType = new ComboBox();
             dtpDateTo = new DateTimePicker();
-            label2 = new Label();
             lblDateTo = new Label();
-            label3 = new Label();
-            cobDepartment = new ComboBox();
             btnOK = new Button();
-            label4 = new Label();
-            cobSection = new ComboBox();
             dataGridView = new DataGridView();
             btnClose = new Button();
             btnExportReport = new Button();
@@ -54,6 +48,8 @@ namespace DMS.DesktopApp.Reports
             flowLayoutPanel2 = new FlowLayoutPanel();
             statusStrip1 = new StatusStrip();
             lblRecordCount = new ToolStripStatusLabel();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            lblElapsed = new ToolStripStatusLabel();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((ISupportInitialize)dataGridView).BeginInit();
@@ -68,26 +64,18 @@ namespace DMS.DesktopApp.Reports
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 7;
+            tableLayoutPanel1.ColumnCount = 5;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.1130686F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 26.4634151F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.439024F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.4878044F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18.5727081F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 233F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 89F));
             tableLayoutPanel1.Controls.Add(dtpDateFrom, 1, 1);
             tableLayoutPanel1.Controls.Add(label1, 0, 1);
             tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 0, 0);
-            tableLayoutPanel1.Controls.Add(cobWorkType, 3, 0);
             tableLayoutPanel1.Controls.Add(dtpDateTo, 3, 1);
-            tableLayoutPanel1.Controls.Add(label2, 2, 0);
             tableLayoutPanel1.Controls.Add(lblDateTo, 2, 1);
-            tableLayoutPanel1.Controls.Add(label3, 4, 0);
-            tableLayoutPanel1.Controls.Add(cobDepartment, 5, 0);
-            tableLayoutPanel1.Controls.Add(btnOK, 6, 0);
-            tableLayoutPanel1.Controls.Add(label4, 4, 1);
-            tableLayoutPanel1.Controls.Add(cobSection, 5, 1);
+            tableLayoutPanel1.Controls.Add(btnOK, 4, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
@@ -104,10 +92,10 @@ namespace DMS.DesktopApp.Reports
             dtpDateFrom.CustomFormat = "dd-MM-yyyy";
             dtpDateFrom.Dock = DockStyle.Fill;
             dtpDateFrom.Format = DateTimePickerFormat.Custom;
-            dtpDateFrom.Location = new Point(97, 32);
+            dtpDateFrom.Location = new Point(136, 32);
             dtpDateFrom.Margin = new Padding(4, 3, 4, 3);
             dtpDateFrom.Name = "dtpDateFrom";
-            dtpDateFrom.Size = new Size(195, 29);
+            dtpDateFrom.Size = new Size(281, 29);
             dtpDateFrom.TabIndex = 21;
             // 
             // label1
@@ -117,7 +105,7 @@ namespace DMS.DesktopApp.Reports
             label1.Location = new Point(4, 29);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(85, 35);
+            label1.Size = new Size(124, 35);
             label1.TabIndex = 15;
             label1.Tag = "Date From";
             label1.Text = "Date From";
@@ -132,7 +120,7 @@ namespace DMS.DesktopApp.Reports
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Margin = new Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(296, 29);
+            flowLayoutPanel1.Size = new Size(421, 29);
             flowLayoutPanel1.TabIndex = 11;
             // 
             // radSingleDate
@@ -165,76 +153,30 @@ namespace DMS.DesktopApp.Reports
             radBetweenDate.UseVisualStyleBackColor = true;
             radBetweenDate.CheckedChanged += radBetweenDate_CheckedChanged;
             // 
-            // cobWorkType
-            // 
-            cobWorkType.Dock = DockStyle.Fill;
-            cobWorkType.FormattingEnabled = true;
-            cobWorkType.Items.AddRange(new object[] { "Document Receiving", "Scanning", "QC", "Dispatch" });
-            cobWorkType.Location = new Point(434, 3);
-            cobWorkType.Margin = new Padding(4, 3, 4, 3);
-            cobWorkType.Name = "cobWorkType";
-            cobWorkType.Size = new Size(188, 29);
-            cobWorkType.TabIndex = 14;
-            // 
             // dtpDateTo
             // 
             dtpDateTo.Cursor = Cursors.Hand;
             dtpDateTo.CustomFormat = "dd-MM-yyyy";
             dtpDateTo.Dock = DockStyle.Fill;
             dtpDateTo.Format = DateTimePickerFormat.Custom;
-            dtpDateTo.Location = new Point(434, 32);
+            dtpDateTo.Location = new Point(615, 32);
             dtpDateTo.Margin = new Padding(4, 3, 4, 3);
             dtpDateTo.Name = "dtpDateTo";
-            dtpDateTo.Size = new Size(188, 29);
+            dtpDateTo.Size = new Size(270, 29);
             dtpDateTo.TabIndex = 16;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Dock = DockStyle.Fill;
-            label2.Location = new Point(300, 0);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(126, 29);
-            label2.TabIndex = 20;
-            label2.Tag = "Work Type";
-            label2.Text = "Work Type";
-            label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblDateTo
             // 
             lblDateTo.AutoSize = true;
             lblDateTo.Dock = DockStyle.Fill;
-            lblDateTo.Location = new Point(300, 29);
+            lblDateTo.Location = new Point(425, 29);
             lblDateTo.Margin = new Padding(4, 0, 4, 0);
             lblDateTo.Name = "lblDateTo";
-            lblDateTo.Size = new Size(126, 35);
+            lblDateTo.Size = new Size(182, 35);
             lblDateTo.TabIndex = 17;
             lblDateTo.Tag = "Date To";
             lblDateTo.Text = "Date To";
             lblDateTo.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Dock = DockStyle.Fill;
-            label3.Location = new Point(630, 0);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(135, 29);
-            label3.TabIndex = 22;
-            label3.Text = "Department";
-            // 
-            // cobDepartment
-            // 
-            cobDepartment.Dock = DockStyle.Fill;
-            cobDepartment.FormattingEnabled = true;
-            cobDepartment.Location = new Point(773, 3);
-            cobDepartment.Margin = new Padding(4, 3, 4, 3);
-            cobDepartment.Name = "cobDepartment";
-            cobDepartment.Size = new Size(225, 29);
-            cobDepartment.TabIndex = 23;
-            cobDepartment.SelectedIndexChanged += cobDepartment_SelectedIndexChanged;
             // 
             // btnOK
             // 
@@ -243,57 +185,33 @@ namespace DMS.DesktopApp.Reports
             btnOK.Dock = DockStyle.Fill;
             btnOK.FlatStyle = FlatStyle.Flat;
             btnOK.ForeColor = Color.White;
-            btnOK.Location = new Point(1002, 0);
+            btnOK.Location = new Point(889, 29);
             btnOK.Margin = new Padding(0);
             btnOK.Name = "btnOK";
-            tableLayoutPanel1.SetRowSpan(btnOK, 2);
-            btnOK.Size = new Size(91, 64);
+            btnOK.Size = new Size(204, 35);
             btnOK.TabIndex = 19;
             btnOK.Tag = "OK";
             btnOK.Text = "OK";
             btnOK.UseVisualStyleBackColor = false;
             btnOK.Click += btnOK_Click;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Dock = DockStyle.Fill;
-            label4.Location = new Point(630, 29);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(135, 35);
-            label4.TabIndex = 24;
-            label4.Text = "Section";
-            // 
-            // cobSection
-            // 
-            cobSection.Dock = DockStyle.Fill;
-            cobSection.Enabled = false;
-            cobSection.FormattingEnabled = true;
-            cobSection.Location = new Point(773, 33);
-            cobSection.Margin = new Padding(4);
-            cobSection.Name = "cobSection";
-            cobSection.Size = new Size(225, 29);
-            cobSection.TabIndex = 25;
-            cobSection.SelectedIndexChanged += cobSection_SelectedIndexChanged;
-            // 
             // dataGridView
             // 
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.Dock = DockStyle.Fill;
             dataGridView.Location = new Point(4, 4);
             dataGridView.Margin = new Padding(4);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
-            dataGridView.Size = new Size(1085, 427);
+            dataGridView.Size = new Size(1085, 428);
             dataGridView.TabIndex = 1;
             dataGridView.CellClick += dataGridView_CellClick;
             // 
@@ -344,7 +262,7 @@ namespace DMS.DesktopApp.Reports
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(tableLayoutPanel2);
-            splitContainer1.Size = new Size(1093, 547);
+            splitContainer1.Size = new Size(1093, 549);
             splitContainer1.SplitterDistance = 64;
             splitContainer1.SplitterWidth = 3;
             splitContainer1.TabIndex = 21;
@@ -362,7 +280,7 @@ namespace DMS.DesktopApp.Reports
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 90.65256F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 9.347443F));
-            tableLayoutPanel2.Size = new Size(1093, 480);
+            tableLayoutPanel2.Size = new Size(1093, 482);
             tableLayoutPanel2.TabIndex = 0;
             tableLayoutPanel2.Paint += tableLayoutPanel2_Paint;
             // 
@@ -372,32 +290,45 @@ namespace DMS.DesktopApp.Reports
             flowLayoutPanel2.Controls.Add(btnExportReport);
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel2.Location = new Point(4, 438);
+            flowLayoutPanel2.Location = new Point(4, 439);
             flowLayoutPanel2.Margin = new Padding(4, 3, 4, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(1085, 39);
+            flowLayoutPanel2.Size = new Size(1085, 40);
             flowLayoutPanel2.TabIndex = 2;
             // 
             // statusStrip1
             // 
             statusStrip1.BackColor = Color.Transparent;
             statusStrip1.ImageScalingSize = new Size(20, 20);
-            statusStrip1.Items.AddRange(new ToolStripItem[] { lblRecordCount });
-            statusStrip1.Location = new Point(9, 555);
+            statusStrip1.Items.AddRange(new ToolStripItem[] { lblRecordCount, toolStripStatusLabel1, lblElapsed });
+            statusStrip1.Location = new Point(9, 557);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Padding = new Padding(1, 0, 12, 0);
-            statusStrip1.Size = new Size(1093, 26);
+            statusStrip1.Size = new Size(1093, 24);
             statusStrip1.TabIndex = 22;
             statusStrip1.Text = "statusStrip1";
             // 
             // lblRecordCount
             // 
+            lblRecordCount.Font = new Font("Segoe UI", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRecordCount.Name = "lblRecordCount";
-            lblRecordCount.Size = new Size(122, 20);
+            lblRecordCount.Size = new Size(113, 18);
             lblRecordCount.Tag = "Total Records: 00";
             lblRecordCount.Text = "Total Records: 00";
             // 
-            // frmDayReport
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(11, 18);
+            toolStripStatusLabel1.Text = "|";
+            // 
+            // lblElapsed
+            // 
+            lblElapsed.Font = new Font("Segoe UI", 7.20000029F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblElapsed.Name = "lblElapsed";
+            lblElapsed.Size = new Size(0, 18);
+            // 
+            // frmClientReport
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -407,11 +338,11 @@ namespace DMS.DesktopApp.Reports
             Controls.Add(statusStrip1);
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
-            Name = "frmDayReport";
+            Name = "frmClientReport";
             Padding = new Padding(9, 8, 9, 8);
             StartPosition = FormStartPosition.CenterScreen;
-            Tag = "Days Report";
-            Text = "Days Report";
+            Tag = "Client Report";
+            Text = "Client Report";
             Load += frmDaysReport_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -450,9 +381,7 @@ namespace DMS.DesktopApp.Reports
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel lblRecordCount;
         private DateTimePicker dtpDateFrom;
-        private Label label3;
-        private ComboBox cobDepartment;
-        private Label label4;
-        private ComboBox cobSection;
+        private ToolStripStatusLabel lblElapsed;
+        private ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

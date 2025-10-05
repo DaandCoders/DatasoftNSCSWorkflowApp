@@ -24,13 +24,13 @@ namespace DMS.DesktopApp.Account
             _translationService = translationService;
 
             //txtEmail.Text = "scanadmin@admin.com";
-            //txtPassword.Text = "admin123";
+           // txtPassword.Text = "admin123";
 
             //txtEmail.Text = "admin@admin.com";
             // txtPassword.Text = "admin123";
 
-            txtEmail.Text = "admin@admin.com";
-            txtPassword.Text = "admin@1234";
+            //txtEmail.Text = "admin@admin.com";
+            //txtPassword.Text = "admin@1234";
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -73,7 +73,7 @@
             btnExist.BackColor = Color.IndianRed;
             btnExist.FlatStyle = FlatStyle.Popup;
             btnExist.ForeColor = Color.White;
-            btnExist.Location = new Point(617, 510);
+            btnExist.Location = new Point(617, 522);
             btnExist.Margin = new Padding(3, 5, 3, 5);
             btnExist.Name = "btnExist";
             btnExist.Size = new Size(97, 36);
@@ -91,14 +91,14 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
-            menuStrip1.Size = new Size(1070, 28);
+            menuStrip1.Size = new Size(1070, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // menFileRecevie
             // 
             menFileRecevie.Name = "menFileRecevie";
-            menFileRecevie.Size = new Size(101, 24);
+            menFileRecevie.Size = new Size(67, 20);
             menFileRecevie.Tag = "File Receive";
             menFileRecevie.Text = "File Receive";
             menFileRecevie.Click += menFileRecevie_Click;
@@ -106,7 +106,7 @@
             // menScan
             // 
             menScan.Name = "menScan";
-            menScan.Size = new Size(54, 24);
+            menScan.Size = new Size(38, 20);
             menScan.Tag = "Scan";
             menScan.Text = "Scan";
             menScan.Click += menScan_Click;
@@ -114,7 +114,7 @@
             // menQC
             // 
             menQC.Name = "menQC";
-            menQC.Size = new Size(43, 24);
+            menQC.Size = new Size(31, 20);
             menQC.Tag = "QC";
             menQC.Text = "QC";
             menQC.Click += menQC_Click;
@@ -122,7 +122,7 @@
             // menAbout
             // 
             menAbout.Name = "menAbout";
-            menAbout.Size = new Size(64, 24);
+            menAbout.Size = new Size(44, 20);
             menAbout.Tag = "About";
             menAbout.Text = "About";
             // 
@@ -131,30 +131,30 @@
             statusStrip1.BackColor = Color.Transparent;
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, seprator1, toolStripStatusLabel2, lblUserName });
-            statusStrip1.Location = new Point(0, 584);
+            statusStrip1.Location = new Point(0, 592);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Padding = new Padding(1, 0, 16, 0);
-            statusStrip1.Size = new Size(1070, 30);
+            statusStrip1.Size = new Size(1070, 22);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(921, 24);
+            toolStripStatusLabel1.Size = new Size(967, 17);
             toolStripStatusLabel1.Spring = true;
             // 
             // seprator1
             // 
             seprator1.ForeColor = SystemColors.ControlDarkDark;
             seprator1.Name = "seprator1";
-            seprator1.Size = new Size(13, 24);
+            seprator1.Size = new Size(7, 17);
             seprator1.Text = "|";
             // 
             // toolStripStatusLabel2
             // 
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            toolStripStatusLabel2.Size = new Size(85, 24);
+            toolStripStatusLabel2.Size = new Size(55, 17);
             toolStripStatusLabel2.Tag = "User Name:";
             toolStripStatusLabel2.Text = "User Name:";
             // 
@@ -163,13 +163,13 @@
             lblUserName.BorderSides = ToolStripStatusLabelBorderSides.Left | ToolStripStatusLabelBorderSides.Top | ToolStripStatusLabelBorderSides.Right | ToolStripStatusLabelBorderSides.Bottom;
             lblUserName.BorderStyle = Border3DStyle.SunkenInner;
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(34, 24);
+            lblUserName.Size = new Size(24, 17);
             lblUserName.Text = "xxx";
             // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
-            splitContainer1.Location = new Point(0, 28);
+            splitContainer1.Location = new Point(0, 24);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -183,7 +183,7 @@
             splitContainer1.Panel2.Controls.Add(btnExist);
             splitContainer1.Panel2.Controls.Add(pieChart1);
             splitContainer1.Panel2.Padding = new Padding(5);
-            splitContainer1.Size = new Size(1070, 556);
+            splitContainer1.Size = new Size(1070, 568);
             splitContainer1.SplitterDistance = 340;
             splitContainer1.TabIndex = 3;
             // 
@@ -199,7 +199,7 @@
             // spcAside.Panel1
             // 
             spcAside.Panel1.Controls.Add(tlpCounts);
-            spcAside.Size = new Size(330, 546);
+            spcAside.Size = new Size(330, 558);
             spcAside.SplitterDistance = 255;
             spcAside.TabIndex = 1;
             // 
@@ -326,6 +326,7 @@
             linkLabel6.TabStop = true;
             linkLabel6.Tag = "Total File QC By Client";
             linkLabel6.Text = "Current Files QC By Client Status";
+            linkLabel6.Visible = false;
             // 
             // lblTotalFileDispatched
             // 
@@ -348,6 +349,7 @@
             lblTotalFileQCByCLient.Size = new Size(88, 34);
             lblTotalFileQCByCLient.TabIndex = 12;
             lblTotalFileQCByCLient.Text = "00";
+            lblTotalFileQCByCLient.Visible = false;
             // 
             // btnRefresh
             // 
@@ -366,15 +368,15 @@
             pieChart1.Dock = DockStyle.Fill;
             pieChart1.Location = new Point(5, 5);
             pieChart1.Name = "pieChart1";
-            pieChart1.Size = new Size(716, 546);
+            pieChart1.Size = new Size(716, 558);
             pieChart1.TabIndex = 0;
             pieChart1.Text = "pieChart1";
             // 
             // frmDashboard
             // 
-            AutoScaleDimensions = new SizeF(9F, 23F);
+            AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1070, 614);
             Controls.Add(splitContainer1);
             Controls.Add(statusStrip1);

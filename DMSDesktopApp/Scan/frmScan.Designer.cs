@@ -161,17 +161,17 @@
             statusStrip1.BackColor = Color.Transparent;
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel2, lblPageCount, seprator1, toolStripStatusLabel1, lblGeneratedPath, lblImagePosition, toolStripStatusLabel3, lblImageCoordinates });
-            statusStrip1.Location = new Point(0, 538);
+            statusStrip1.Location = new Point(0, 720);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Padding = new Padding(1, 0, 12, 0);
-            statusStrip1.Size = new Size(1199, 24);
+            statusStrip1.Padding = new Padding(1, 0, 13, 0);
+            statusStrip1.Size = new Size(1371, 30);
             statusStrip1.TabIndex = 0;
             statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel2
             // 
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            toolStripStatusLabel2.Size = new Size(69, 19);
+            toolStripStatusLabel2.Size = new Size(84, 24);
             toolStripStatusLabel2.Tag = "Page Count";
             toolStripStatusLabel2.Text = "Page Count";
             // 
@@ -180,7 +180,7 @@
             lblPageCount.BorderSides = ToolStripStatusLabelBorderSides.Left | ToolStripStatusLabelBorderSides.Top | ToolStripStatusLabelBorderSides.Right | ToolStripStatusLabelBorderSides.Bottom;
             lblPageCount.BorderStyle = Border3DStyle.SunkenOuter;
             lblPageCount.Name = "lblPageCount";
-            lblPageCount.Size = new Size(23, 19);
+            lblPageCount.Size = new Size(29, 24);
             lblPageCount.Text = "00";
             // 
             // seprator1
@@ -188,13 +188,13 @@
             seprator1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             seprator1.ForeColor = SystemColors.ControlDarkDark;
             seprator1.Name = "seprator1";
-            seprator1.Size = new Size(11, 19);
+            seprator1.Size = new Size(14, 24);
             seprator1.Text = "|";
             // 
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(53, 19);
+            toolStripStatusLabel1.Size = new Size(66, 24);
             toolStripStatusLabel1.Tag = "Location";
             toolStripStatusLabel1.Text = "Location";
             // 
@@ -204,27 +204,27 @@
             lblGeneratedPath.BorderStyle = Border3DStyle.SunkenOuter;
             lblGeneratedPath.DoubleClickEnabled = true;
             lblGeneratedPath.Name = "lblGeneratedPath";
-            lblGeneratedPath.Size = new Size(29, 19);
+            lblGeneratedPath.Size = new Size(37, 24);
             lblGeneratedPath.Text = "000";
             lblGeneratedPath.Click += lblGeneratedPath_Click;
             // 
             // lblImagePosition
             // 
             lblImagePosition.Name = "lblImagePosition";
-            lblImagePosition.Size = new Size(19, 19);
+            lblImagePosition.Size = new Size(25, 24);
             lblImagePosition.Text = "00";
             // 
             // toolStripStatusLabel3
             // 
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            toolStripStatusLabel3.Size = new Size(71, 19);
+            toolStripStatusLabel3.Size = new Size(89, 24);
             toolStripStatusLabel3.Tag = "Coordinates";
             toolStripStatusLabel3.Text = "Coordinates";
             // 
             // lblImageCoordinates
             // 
             lblImageCoordinates.Name = "lblImageCoordinates";
-            lblImageCoordinates.Size = new Size(86, 19);
+            lblImageCoordinates.Size = new Size(107, 24);
             lblImageCoordinates.Tag = "X:0 Y:0 W:0 H:0";
             lblImageCoordinates.Text = "X:0 Y:0 W:0 H:0";
             // 
@@ -233,8 +233,8 @@
             spcMain.Dock = DockStyle.Fill;
             spcMain.FixedPanel = FixedPanel.Panel2;
             spcMain.IsSplitterFixed = true;
-            spcMain.Location = new Point(0, 24);
-            spcMain.Margin = new Padding(3, 2, 3, 2);
+            spcMain.Location = new Point(0, 30);
+            spcMain.Margin = new Padding(4, 3, 4, 3);
             spcMain.Name = "spcMain";
             spcMain.Orientation = Orientation.Horizontal;
             // 
@@ -246,8 +246,8 @@
             // spcMain.Panel2
             // 
             spcMain.Panel2.Controls.Add(flowLayoutPanel1);
-            spcMain.Size = new Size(1199, 514);
-            spcMain.SplitterDistance = 486;
+            spcMain.Size = new Size(1371, 690);
+            spcMain.SplitterDistance = 645;
             spcMain.SplitterWidth = 3;
             spcMain.TabIndex = 1;
             spcMain.SplitterMoved += spcMain_SplitterMoved;
@@ -257,8 +257,8 @@
             splitContainer2.Dock = DockStyle.Fill;
             splitContainer2.FixedPanel = FixedPanel.Panel1;
             splitContainer2.IsSplitterFixed = true;
-            splitContainer2.Location = new Point(0, 27);
-            splitContainer2.Margin = new Padding(3, 2, 3, 2);
+            splitContainer2.Location = new Point(0, 28);
+            splitContainer2.Margin = new Padding(4, 3, 4, 3);
             splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -268,8 +268,8 @@
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(spcScanData);
-            splitContainer2.Size = new Size(1199, 459);
-            splitContainer2.SplitterDistance = 316;
+            splitContainer2.Size = new Size(1371, 617);
+            splitContainer2.SplitterDistance = 361;
             splitContainer2.TabIndex = 2;
             // 
             // tlpScanBatch
@@ -307,9 +307,9 @@
             tlpScanBatch.Dock = DockStyle.Fill;
             tlpScanBatch.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
             tlpScanBatch.Location = new Point(0, 0);
-            tlpScanBatch.Margin = new Padding(4);
+            tlpScanBatch.Margin = new Padding(4, 5, 4, 5);
             tlpScanBatch.Name = "tlpScanBatch";
-            tlpScanBatch.Padding = new Padding(4);
+            tlpScanBatch.Padding = new Padding(4, 5, 4, 5);
             tlpScanBatch.RowCount = 13;
             tlpScanBatch.RowStyles.Add(new RowStyle(SizeType.Percent, 7.69230747F));
             tlpScanBatch.RowStyles.Add(new RowStyle(SizeType.Percent, 7.69230747F));
@@ -324,16 +324,17 @@
             tlpScanBatch.RowStyles.Add(new RowStyle(SizeType.Percent, 7.69230747F));
             tlpScanBatch.RowStyles.Add(new RowStyle(SizeType.Percent, 7.69230747F));
             tlpScanBatch.RowStyles.Add(new RowStyle(SizeType.Percent, 7.69230747F));
-            tlpScanBatch.Size = new Size(316, 459);
+            tlpScanBatch.Size = new Size(361, 617);
             tlpScanBatch.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Dock = DockStyle.Fill;
-            label2.Location = new Point(10, 109);
+            label2.Location = new Point(11, 146);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(80, 31);
+            label2.Size = new Size(91, 43);
             label2.TabIndex = 1;
             label2.Tag = "Case Number";
             label2.Text = "Case Number";
@@ -342,9 +343,10 @@
             // 
             label1.AutoSize = true;
             label1.Dock = DockStyle.Fill;
-            label1.Location = new Point(10, 75);
+            label1.Location = new Point(11, 100);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(80, 31);
+            label1.Size = new Size(91, 43);
             label1.TabIndex = 0;
             label1.Tag = "Case Type";
             label1.Text = "Case Type";
@@ -353,9 +355,10 @@
             // 
             label15.AutoSize = true;
             label15.Dock = DockStyle.Fill;
-            label15.Location = new Point(10, 7);
+            label15.Location = new Point(11, 8);
+            label15.Margin = new Padding(4, 0, 4, 0);
             label15.Name = "label15";
-            label15.Size = new Size(80, 31);
+            label15.Size = new Size(91, 43);
             label15.TabIndex = 6;
             label15.Tag = "Barcode";
             label15.Text = "Barcode";
@@ -364,9 +367,10 @@
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Fill;
-            label4.Location = new Point(10, 41);
+            label4.Location = new Point(11, 54);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(80, 31);
+            label4.Size = new Size(91, 43);
             label4.TabIndex = 3;
             label4.Tag = "Case Year";
             label4.Text = "Case Year";
@@ -378,19 +382,20 @@
             cobCaseYear.Dock = DockStyle.Fill;
             cobCaseYear.Enabled = false;
             cobCaseYear.FormattingEnabled = true;
-            cobCaseYear.Location = new Point(99, 43);
-            cobCaseYear.Margin = new Padding(3, 2, 3, 2);
+            cobCaseYear.Location = new Point(113, 57);
+            cobCaseYear.Margin = new Padding(4, 3, 4, 3);
             cobCaseYear.Name = "cobCaseYear";
-            cobCaseYear.Size = new Size(207, 23);
+            cobCaseYear.Size = new Size(237, 28);
             cobCaseYear.TabIndex = 4;
             // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Dock = DockStyle.Fill;
-            label14.Location = new Point(10, 381);
+            label14.Location = new Point(11, 514);
+            label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
-            label14.Size = new Size(80, 31);
+            label14.Size = new Size(91, 43);
             label14.TabIndex = 13;
             label14.Tag = "Section";
             label14.Text = "Section";
@@ -400,11 +405,11 @@
             // 
             txtSection.Dock = DockStyle.Fill;
             txtSection.Enabled = false;
-            txtSection.Location = new Point(99, 383);
-            txtSection.Margin = new Padding(3, 2, 3, 2);
+            txtSection.Location = new Point(113, 517);
+            txtSection.Margin = new Padding(4, 3, 4, 3);
             txtSection.Multiline = true;
             txtSection.Name = "txtSection";
-            txtSection.Size = new Size(207, 27);
+            txtSection.Size = new Size(237, 37);
             txtSection.TabIndex = 21;
             txtSection.Visible = false;
             // 
@@ -412,9 +417,10 @@
             // 
             label13.AutoSize = true;
             label13.Dock = DockStyle.Fill;
-            label13.Location = new Point(10, 347);
+            label13.Location = new Point(11, 468);
+            label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(80, 31);
+            label13.Size = new Size(91, 43);
             label13.TabIndex = 12;
             label13.Tag = "Act";
             label13.Text = "Act";
@@ -424,11 +430,11 @@
             // 
             txtAct.Dock = DockStyle.Fill;
             txtAct.Enabled = false;
-            txtAct.Location = new Point(99, 349);
-            txtAct.Margin = new Padding(3, 2, 3, 2);
+            txtAct.Location = new Point(113, 471);
+            txtAct.Margin = new Padding(4, 3, 4, 3);
             txtAct.Multiline = true;
             txtAct.Name = "txtAct";
-            txtAct.Size = new Size(207, 27);
+            txtAct.Size = new Size(237, 37);
             txtAct.TabIndex = 20;
             txtAct.Visible = false;
             // 
@@ -436,9 +442,10 @@
             // 
             label12.AutoSize = true;
             label12.Dock = DockStyle.Fill;
-            label12.Location = new Point(10, 313);
+            label12.Location = new Point(11, 422);
+            label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(80, 31);
+            label12.Size = new Size(91, 43);
             label12.TabIndex = 11;
             label12.Tag = "Nature of Disposal";
             label12.Text = "Nature of Disposal";
@@ -448,11 +455,11 @@
             // 
             txtNatureOfDisposal.Dock = DockStyle.Fill;
             txtNatureOfDisposal.Enabled = false;
-            txtNatureOfDisposal.Location = new Point(99, 315);
-            txtNatureOfDisposal.Margin = new Padding(3, 2, 3, 2);
+            txtNatureOfDisposal.Location = new Point(113, 425);
+            txtNatureOfDisposal.Margin = new Padding(4, 3, 4, 3);
             txtNatureOfDisposal.Multiline = true;
             txtNatureOfDisposal.Name = "txtNatureOfDisposal";
-            txtNatureOfDisposal.Size = new Size(207, 27);
+            txtNatureOfDisposal.Size = new Size(237, 37);
             txtNatureOfDisposal.TabIndex = 19;
             txtNatureOfDisposal.Visible = false;
             // 
@@ -460,9 +467,10 @@
             // 
             label11.AutoSize = true;
             label11.Dock = DockStyle.Fill;
-            label11.Location = new Point(10, 279);
+            label11.Location = new Point(11, 376);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(80, 31);
+            label11.Size = new Size(91, 43);
             label11.TabIndex = 10;
             label11.Tag = "Date of Decision";
             label11.Text = "Date of Decision";
@@ -472,11 +480,11 @@
             // 
             txtDOD.Dock = DockStyle.Fill;
             txtDOD.Enabled = false;
-            txtDOD.Location = new Point(99, 281);
-            txtDOD.Margin = new Padding(3, 2, 3, 2);
+            txtDOD.Location = new Point(113, 379);
+            txtDOD.Margin = new Padding(4, 3, 4, 3);
             txtDOD.Multiline = true;
             txtDOD.Name = "txtDOD";
-            txtDOD.Size = new Size(207, 27);
+            txtDOD.Size = new Size(237, 37);
             txtDOD.TabIndex = 18;
             txtDOD.Visible = false;
             // 
@@ -484,9 +492,10 @@
             // 
             label10.AutoSize = true;
             label10.Dock = DockStyle.Fill;
-            label10.Location = new Point(10, 245);
+            label10.Location = new Point(11, 330);
+            label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(80, 31);
+            label10.Size = new Size(91, 43);
             label10.TabIndex = 9;
             label10.Tag = "Date of Registration";
             label10.Text = "Date of Registration";
@@ -496,11 +505,11 @@
             // 
             txtDOR.Dock = DockStyle.Fill;
             txtDOR.Enabled = false;
-            txtDOR.Location = new Point(99, 247);
-            txtDOR.Margin = new Padding(3, 2, 3, 2);
+            txtDOR.Location = new Point(113, 333);
+            txtDOR.Margin = new Padding(4, 3, 4, 3);
             txtDOR.Multiline = true;
             txtDOR.Name = "txtDOR";
-            txtDOR.Size = new Size(207, 27);
+            txtDOR.Size = new Size(237, 37);
             txtDOR.TabIndex = 17;
             txtDOR.Visible = false;
             // 
@@ -508,9 +517,10 @@
             // 
             label9.AutoSize = true;
             label9.Dock = DockStyle.Fill;
-            label9.Location = new Point(10, 211);
+            label9.Location = new Point(11, 284);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(80, 31);
+            label9.Size = new Size(91, 43);
             label9.TabIndex = 8;
             label9.Tag = "Advocate";
             label9.Text = "Advocate";
@@ -520,11 +530,11 @@
             // 
             txtAdvocate.Dock = DockStyle.Fill;
             txtAdvocate.Enabled = false;
-            txtAdvocate.Location = new Point(99, 213);
-            txtAdvocate.Margin = new Padding(3, 2, 3, 2);
+            txtAdvocate.Location = new Point(113, 287);
+            txtAdvocate.Margin = new Padding(4, 3, 4, 3);
             txtAdvocate.Multiline = true;
             txtAdvocate.Name = "txtAdvocate";
-            txtAdvocate.Size = new Size(207, 27);
+            txtAdvocate.Size = new Size(237, 37);
             txtAdvocate.TabIndex = 16;
             txtAdvocate.Visible = false;
             // 
@@ -532,9 +542,10 @@
             // 
             label8.AutoSize = true;
             label8.Dock = DockStyle.Fill;
-            label8.Location = new Point(10, 177);
+            label8.Location = new Point(11, 238);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(80, 31);
+            label8.Size = new Size(91, 43);
             label8.TabIndex = 7;
             label8.Tag = "File Number";
             label8.Text = "File Number";
@@ -543,19 +554,20 @@
             // 
             txtFileNumber.Dock = DockStyle.Fill;
             txtFileNumber.Enabled = false;
-            txtFileNumber.Location = new Point(99, 179);
-            txtFileNumber.Margin = new Padding(3, 2, 3, 2);
+            txtFileNumber.Location = new Point(113, 241);
+            txtFileNumber.Margin = new Padding(4, 3, 4, 3);
             txtFileNumber.Multiline = true;
             txtFileNumber.Name = "txtFileNumber";
-            txtFileNumber.Size = new Size(207, 27);
+            txtFileNumber.Size = new Size(237, 37);
             txtFileNumber.TabIndex = 15;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(10, 143);
+            label6.Location = new Point(11, 192);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(73, 30);
+            label6.Size = new Size(89, 40);
             label6.TabIndex = 6;
             label6.Tag = "Department Name";
             label6.Text = "Department Name";
@@ -564,21 +576,21 @@
             // 
             txtDepartmentName.Dock = DockStyle.Fill;
             txtDepartmentName.Enabled = false;
-            txtDepartmentName.Location = new Point(99, 145);
-            txtDepartmentName.Margin = new Padding(3, 2, 3, 2);
+            txtDepartmentName.Location = new Point(113, 195);
+            txtDepartmentName.Margin = new Padding(4, 3, 4, 3);
             txtDepartmentName.Multiline = true;
             txtDepartmentName.Name = "txtDepartmentName";
-            txtDepartmentName.Size = new Size(207, 27);
+            txtDepartmentName.Size = new Size(237, 37);
             txtDepartmentName.TabIndex = 14;
             // 
             // txtCaseNo
             // 
             txtCaseNo.Dock = DockStyle.Fill;
             txtCaseNo.Enabled = false;
-            txtCaseNo.Location = new Point(99, 111);
-            txtCaseNo.Margin = new Padding(3, 2, 3, 2);
+            txtCaseNo.Location = new Point(113, 149);
+            txtCaseNo.Margin = new Padding(4, 3, 4, 3);
             txtCaseNo.Name = "txtCaseNo";
-            txtCaseNo.Size = new Size(207, 23);
+            txtCaseNo.Size = new Size(237, 27);
             txtCaseNo.TabIndex = 22;
             // 
             // cobBarcode
@@ -587,19 +599,20 @@
             cobBarcode.AutoCompleteSource = AutoCompleteSource.ListItems;
             cobBarcode.Dock = DockStyle.Fill;
             cobBarcode.FormattingEnabled = true;
-            cobBarcode.Location = new Point(99, 9);
-            cobBarcode.Margin = new Padding(3, 2, 3, 2);
+            cobBarcode.Location = new Point(113, 11);
+            cobBarcode.Margin = new Padding(4, 3, 4, 3);
             cobBarcode.Name = "cobBarcode";
-            cobBarcode.Size = new Size(207, 23);
+            cobBarcode.Size = new Size(237, 28);
             cobBarcode.TabIndex = 23;
             cobBarcode.SelectedIndexChanged += cobBarcode_SelectedIndexChanged;
             // 
             // lblFileName
             // 
             lblFileName.AutoSize = true;
-            lblFileName.Location = new Point(10, 415);
+            lblFileName.Location = new Point(11, 560);
+            lblFileName.Margin = new Padding(4, 0, 4, 0);
             lblFileName.Name = "lblFileName";
-            lblFileName.Size = new Size(60, 15);
+            lblFileName.Size = new Size(76, 20);
             lblFileName.TabIndex = 24;
             lblFileName.Tag = "File Name";
             lblFileName.Text = "File Name";
@@ -609,10 +622,10 @@
             cobFileName.Dock = DockStyle.Fill;
             cobFileName.FormattingEnabled = true;
             cobFileName.Items.AddRange(new object[] { "NS", "CS" });
-            cobFileName.Location = new Point(99, 417);
-            cobFileName.Margin = new Padding(3, 2, 3, 2);
+            cobFileName.Location = new Point(113, 563);
+            cobFileName.Margin = new Padding(4, 3, 4, 3);
             cobFileName.Name = "cobFileName";
-            cobFileName.Size = new Size(207, 23);
+            cobFileName.Size = new Size(237, 28);
             cobFileName.TabIndex = 25;
             cobFileName.SelectedIndexChanged += cobFileName_SelectedIndexChanged;
             // 
@@ -620,10 +633,11 @@
             // 
             txtCaseTitle.BackColor = SystemColors.Window;
             txtCaseTitle.Dock = DockStyle.Fill;
-            txtCaseTitle.Location = new Point(99, 78);
+            txtCaseTitle.Location = new Point(113, 103);
+            txtCaseTitle.Margin = new Padding(4, 3, 4, 3);
             txtCaseTitle.Name = "txtCaseTitle";
             txtCaseTitle.ReadOnly = true;
-            txtCaseTitle.Size = new Size(207, 23);
+            txtCaseTitle.Size = new Size(237, 27);
             txtCaseTitle.TabIndex = 26;
             // 
             // spcScanData
@@ -631,7 +645,7 @@
             spcScanData.Dock = DockStyle.Fill;
             spcScanData.FixedPanel = FixedPanel.Panel1;
             spcScanData.Location = new Point(0, 0);
-            spcScanData.Margin = new Padding(3, 2, 3, 2);
+            spcScanData.Margin = new Padding(4, 3, 4, 3);
             spcScanData.Name = "spcScanData";
             // 
             // spcScanData.Panel1
@@ -643,8 +657,8 @@
             spcScanData.Panel2.Controls.Add(imgBox);
             spcScanData.Panel2.Controls.Add(tspFrontImage);
             spcScanData.Panel2.Controls.Add(toolStrip1);
-            spcScanData.Size = new Size(879, 459);
-            spcScanData.SplitterDistance = 169;
+            spcScanData.Size = new Size(1006, 617);
+            spcScanData.SplitterDistance = 193;
             spcScanData.TabIndex = 0;
             spcScanData.SplitterMoved += spcScanData_SplitterMoved;
             // 
@@ -654,8 +668,9 @@
             lstImgBox.Dock = DockStyle.Fill;
             lstImgBox.FormattingEnabled = true;
             lstImgBox.Location = new Point(0, 0);
+            lstImgBox.Margin = new Padding(4, 3, 4, 3);
             lstImgBox.Name = "lstImgBox";
-            lstImgBox.Size = new Size(169, 459);
+            lstImgBox.Size = new Size(193, 617);
             lstImgBox.Sorted = true;
             lstImgBox.TabIndex = 0;
             lstImgBox.KeyDown += lstImgBox_KeyDown;
@@ -667,12 +682,12 @@
             imgQueueContectMenu.ImageScalingSize = new Size(20, 20);
             imgQueueContectMenu.Items.AddRange(new ToolStripItem[] { menCut, menRename, menDelete, menDeleteSelected, menCancelCut, menInsertBefore, cmenInsertAfter });
             imgQueueContectMenu.Name = "imgQueueContectMenu";
-            imgQueueContectMenu.Size = new Size(211, 158);
+            imgQueueContectMenu.Size = new Size(256, 172);
             // 
             // menCut
             // 
             menCut.Name = "menCut";
-            menCut.Size = new Size(210, 22);
+            menCut.Size = new Size(255, 24);
             menCut.Text = "Cut";
             menCut.Click += menCut_Click;
             // 
@@ -680,14 +695,14 @@
             // 
             menRename.Enabled = false;
             menRename.Name = "menRename";
-            menRename.Size = new Size(210, 22);
+            menRename.Size = new Size(255, 24);
             menRename.Text = "Rename";
             // 
             // menDelete
             // 
             menDelete.Name = "menDelete";
             menDelete.ShortcutKeyDisplayString = "Del";
-            menDelete.Size = new Size(210, 22);
+            menDelete.Size = new Size(255, 24);
             menDelete.Text = "Delete";
             menDelete.Click += menDelete_Click;
             // 
@@ -696,7 +711,7 @@
             menDeleteSelected.Enabled = false;
             menDeleteSelected.Name = "menDeleteSelected";
             menDeleteSelected.ShortcutKeyDisplayString = "Shift+Del";
-            menDeleteSelected.Size = new Size(210, 22);
+            menDeleteSelected.Size = new Size(255, 24);
             menDeleteSelected.Text = "Delete Selected";
             menDeleteSelected.Click += menDeleteSelected_Click;
             // 
@@ -704,21 +719,21 @@
             // 
             menCancelCut.Enabled = false;
             menCancelCut.Name = "menCancelCut";
-            menCancelCut.Size = new Size(210, 22);
+            menCancelCut.Size = new Size(255, 24);
             menCancelCut.Text = "Cancel Cut";
             // 
             // menInsertBefore
             // 
             menInsertBefore.Enabled = false;
             menInsertBefore.Name = "menInsertBefore";
-            menInsertBefore.Size = new Size(210, 22);
+            menInsertBefore.Size = new Size(255, 24);
             menInsertBefore.Text = "Paste Before";
             // 
             // cmenInsertAfter
             // 
             cmenInsertAfter.Enabled = false;
             cmenInsertAfter.Name = "cmenInsertAfter";
-            cmenInsertAfter.Size = new Size(210, 22);
+            cmenInsertAfter.Size = new Size(255, 24);
             cmenInsertAfter.Text = "Paste After";
             // 
             // imgBox
@@ -730,10 +745,10 @@
             imgBox.GridDisplayMode = UKA.Windows.Forms.ImageBoxGridDisplayMode.None;
             imgBox.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
             imgBox.Location = new Point(0, 31);
-            imgBox.Margin = new Padding(4);
+            imgBox.Margin = new Padding(4, 5, 4, 5);
             imgBox.Name = "imgBox";
             imgBox.SelectionMode = UKA.Windows.Forms.ImageBoxSelectionMode.Rectangle;
-            imgBox.Size = new Size(706, 397);
+            imgBox.Size = new Size(809, 555);
             imgBox.SizeMode = UKA.Windows.Forms.ImageBoxSizeMode.Fit;
             imgBox.TabIndex = 5;
             imgBox.Text = "DCS Imaging";
@@ -745,8 +760,8 @@
             tspFrontImage.Items.AddRange(new ToolStripItem[] { btnZoomIn, btnZoomOut, toolStripSeparator5, btnRotateLeft, btnRotateRight, toolStripSeparator6, btnFrontZoomToFit, btnFrontActualSize, toolStripSeparator7, btnDeskew, btnCrop, toolStripSeparator8, btnRefresh, btnSave, toolStripSeparator3, txtGoto, toolStripSeparator4, btnGoto, cobZoomLevel, toolStripSeparator9, chkImagesRaw });
             tspFrontImage.Location = new Point(0, 0);
             tspFrontImage.Name = "tspFrontImage";
-            tspFrontImage.Padding = new Padding(0, 0, 3, 0);
-            tspFrontImage.Size = new Size(706, 31);
+            tspFrontImage.Padding = new Padding(0, 0, 4, 0);
+            tspFrontImage.Size = new Size(809, 31);
             tspFrontImage.TabIndex = 4;
             tspFrontImage.Text = "toolStrip2";
             // 
@@ -756,7 +771,7 @@
             btnZoomIn.Image = Properties.Resources.zoom_in_24px;
             btnZoomIn.ImageTransparentColor = Color.Magenta;
             btnZoomIn.Name = "btnZoomIn";
-            btnZoomIn.Size = new Size(28, 28);
+            btnZoomIn.Size = new Size(29, 28);
             btnZoomIn.Tag = "Zoom In (Key Add)";
             btnZoomIn.Text = "Zoom In (Key Add)";
             btnZoomIn.ToolTipText = "Zoom In,  (Key Add)";
@@ -768,7 +783,7 @@
             btnZoomOut.Image = Properties.Resources.zoom_out_24px;
             btnZoomOut.ImageTransparentColor = Color.Magenta;
             btnZoomOut.Name = "btnZoomOut";
-            btnZoomOut.Size = new Size(28, 28);
+            btnZoomOut.Size = new Size(29, 28);
             btnZoomOut.Tag = "Zoom Out (Key Subtract)";
             btnZoomOut.Text = "Zoom Out (Key Subtract)";
             btnZoomOut.ToolTipText = "Zoom Out, (Key Subtract)";
@@ -785,7 +800,7 @@
             btnRotateLeft.Image = Properties.Resources.RotateLeft;
             btnRotateLeft.ImageTransparentColor = Color.Magenta;
             btnRotateLeft.Name = "btnRotateLeft";
-            btnRotateLeft.Size = new Size(28, 28);
+            btnRotateLeft.Size = new Size(29, 28);
             btnRotateLeft.Tag = "Rotate Left";
             btnRotateLeft.Text = "Rotate Left";
             btnRotateLeft.ToolTipText = "Rotate Left,  (Ctrl+L)";
@@ -797,7 +812,7 @@
             btnRotateRight.Image = Properties.Resources.RotateRight;
             btnRotateRight.ImageTransparentColor = Color.Magenta;
             btnRotateRight.Name = "btnRotateRight";
-            btnRotateRight.Size = new Size(28, 28);
+            btnRotateRight.Size = new Size(29, 28);
             btnRotateRight.Tag = "Rotate Right";
             btnRotateRight.Text = "Rotate Right";
             btnRotateRight.ToolTipText = "Rotate Right, ( Ctrl+R)";
@@ -814,7 +829,7 @@
             btnFrontZoomToFit.Image = Properties.Resources.fitTo;
             btnFrontZoomToFit.ImageTransparentColor = Color.Magenta;
             btnFrontZoomToFit.Name = "btnFrontZoomToFit";
-            btnFrontZoomToFit.Size = new Size(28, 28);
+            btnFrontZoomToFit.Size = new Size(29, 28);
             btnFrontZoomToFit.Tag = "Fit To Zoom";
             btnFrontZoomToFit.Text = "Fit To Zoom";
             btnFrontZoomToFit.ToolTipText = "Fit To Zoom (Key F)";
@@ -826,7 +841,7 @@
             btnFrontActualSize.Image = Properties.Resources.actualSize;
             btnFrontActualSize.ImageTransparentColor = Color.Magenta;
             btnFrontActualSize.Name = "btnFrontActualSize";
-            btnFrontActualSize.Size = new Size(28, 28);
+            btnFrontActualSize.Size = new Size(29, 28);
             btnFrontActualSize.Tag = "Actual Size";
             btnFrontActualSize.Text = "Actual Size";
             btnFrontActualSize.ToolTipText = "Actual Size (Key A)";
@@ -843,7 +858,7 @@
             btnDeskew.Image = Properties.Resources.deskew;
             btnDeskew.ImageTransparentColor = Color.Magenta;
             btnDeskew.Name = "btnDeskew";
-            btnDeskew.Size = new Size(28, 28);
+            btnDeskew.Size = new Size(29, 28);
             btnDeskew.Tag = "Deskew";
             btnDeskew.Text = "Deskew";
             btnDeskew.ToolTipText = "Deskew, (Ctrl+ D)";
@@ -855,7 +870,7 @@
             btnCrop.Image = Properties.Resources.crop;
             btnCrop.ImageTransparentColor = Color.Magenta;
             btnCrop.Name = "btnCrop";
-            btnCrop.Size = new Size(28, 28);
+            btnCrop.Size = new Size(29, 28);
             btnCrop.Tag = "Front Crop";
             btnCrop.Text = "Front Crop";
             btnCrop.ToolTipText = "ImageCrop, (Ctrl+ C)";
@@ -873,7 +888,7 @@
             btnRefresh.Image = Properties.Resources.refresh;
             btnRefresh.ImageTransparentColor = Color.Magenta;
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(28, 28);
+            btnRefresh.Size = new Size(29, 28);
             btnRefresh.Tag = "Refresh Image";
             btnRefresh.Text = "Refresh Image";
             btnRefresh.ToolTipText = " Refresh Image, (Key F5)";
@@ -886,7 +901,7 @@
             btnSave.Image = Properties.Resources.save1;
             btnSave.ImageTransparentColor = Color.Magenta;
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(28, 28);
+            btnSave.Size = new Size(29, 28);
             btnSave.Tag = "Save Image (Ctrl+S)";
             btnSave.Text = "Save Image (Ctrl+S)";
             btnSave.Click += btnSave_Click;
@@ -900,7 +915,7 @@
             // 
             txtGoto.BackColor = SystemColors.Info;
             txtGoto.Name = "txtGoto";
-            txtGoto.Size = new Size(116, 31);
+            txtGoto.Size = new Size(132, 31);
             // 
             // toolStripSeparator4
             // 
@@ -913,7 +928,7 @@
             btnGoto.Image = Properties.Resources.goto_16px;
             btnGoto.ImageTransparentColor = Color.Magenta;
             btnGoto.Name = "btnGoto";
-            btnGoto.Size = new Size(28, 28);
+            btnGoto.Size = new Size(29, 28);
             btnGoto.Text = "Goto";
             btnGoto.Click += btnGoto_Click;
             // 
@@ -921,7 +936,7 @@
             // 
             cobZoomLevel.BackColor = SystemColors.Info;
             cobZoomLevel.Name = "cobZoomLevel";
-            cobZoomLevel.Size = new Size(106, 31);
+            cobZoomLevel.Size = new Size(120, 31);
             cobZoomLevel.SelectedIndexChanged += cobZoomLevel_SelectedIndexChanged;
             // 
             // toolStripSeparator9
@@ -936,7 +951,7 @@
             chkImagesRaw.Image = Properties.Resources.checkboxUnchecked50x;
             chkImagesRaw.ImageTransparentColor = Color.Magenta;
             chkImagesRaw.Name = "chkImagesRaw";
-            chkImagesRaw.Size = new Size(28, 28);
+            chkImagesRaw.Size = new Size(29, 28);
             chkImagesRaw.Text = "Image from Raw";
             chkImagesRaw.Visible = false;
             // 
@@ -945,10 +960,10 @@
             toolStrip1.Dock = DockStyle.Bottom;
             toolStrip1.ImageScalingSize = new Size(24, 24);
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnFirst, btnPrevious, btnNext, btnLast });
-            toolStrip1.Location = new Point(0, 428);
+            toolStrip1.Location = new Point(0, 586);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Padding = new Padding(0, 0, 2, 0);
-            toolStrip1.Size = new Size(706, 31);
+            toolStrip1.Padding = new Padding(0, 0, 3, 0);
+            toolStrip1.Size = new Size(809, 31);
             toolStrip1.TabIndex = 3;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -958,7 +973,7 @@
             btnFirst.Image = Properties.Resources.First;
             btnFirst.ImageTransparentColor = Color.Magenta;
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(28, 28);
+            btnFirst.Size = new Size(29, 28);
             btnFirst.Text = "First (Key Left)";
             btnFirst.Click += btnFirst_Click;
             // 
@@ -968,7 +983,7 @@
             btnPrevious.Image = Properties.Resources.Previous;
             btnPrevious.ImageTransparentColor = Color.Magenta;
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(28, 28);
+            btnPrevious.Size = new Size(29, 28);
             btnPrevious.Text = "Previous (Key Previous)";
             btnPrevious.Click += btnPrevious_Click;
             // 
@@ -978,7 +993,7 @@
             btnNext.Image = Properties.Resources.Next;
             btnNext.ImageTransparentColor = Color.Magenta;
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(28, 28);
+            btnNext.Size = new Size(29, 28);
             btnNext.Text = "Next (Key Down)";
             btnNext.Click += btnNext_Click;
             // 
@@ -988,7 +1003,7 @@
             btnLast.Image = Properties.Resources.Last;
             btnLast.ImageTransparentColor = Color.Magenta;
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(28, 28);
+            btnLast.Size = new Size(29, 28);
             btnLast.Text = "Last (Key Right)";
             btnLast.Click += btnLast_Click;
             // 
@@ -999,7 +1014,7 @@
             tspScanningTool.Items.AddRange(new ToolStripItem[] { btnSources, btnStartCapture, btnStopScan, toolStripSeparator1, lblDPI, cobDPI, lblMode, cobMode, lblSize, cobSize, lblFormat, cobOutputFormat, lblDuplex, chkDuplex, toolStripSeparator2, btnScannerSettings });
             tspScanningTool.Location = new Point(0, 0);
             tspScanningTool.Name = "tspScanningTool";
-            tspScanningTool.Size = new Size(1199, 27);
+            tspScanningTool.Size = new Size(1371, 28);
             tspScanningTool.TabIndex = 1;
             tspScanningTool.Text = "toolStrip1";
             // 
@@ -1010,7 +1025,7 @@
             btnSources.Image = (Image)resources.GetObject("btnSources.Image");
             btnSources.ImageTransparentColor = Color.Magenta;
             btnSources.Name = "btnSources";
-            btnSources.Size = new Size(93, 24);
+            btnSources.Size = new Size(116, 25);
             btnSources.Tag = "Select Source";
             btnSources.Text = "Select Source ";
             btnSources.DropDownOpening += btnSources_DropDownOpening;
@@ -1018,12 +1033,12 @@
             // sepSourceList
             // 
             sepSourceList.Name = "sepSourceList";
-            sepSourceList.Size = new Size(168, 6);
+            sepSourceList.Size = new Size(212, 6);
             // 
             // reloadSourcesListToolStripMenuItem
             // 
             reloadSourcesListToolStripMenuItem.Name = "reloadSourcesListToolStripMenuItem";
-            reloadSourcesListToolStripMenuItem.Size = new Size(171, 22);
+            reloadSourcesListToolStripMenuItem.Size = new Size(215, 26);
             reloadSourcesListToolStripMenuItem.Tag = "&Reload sources list";
             reloadSourcesListToolStripMenuItem.Text = "&Reload sources list";
             reloadSourcesListToolStripMenuItem.Click += reloadSourcesListToolStripMenuItem_Click_1;
@@ -1035,7 +1050,7 @@
             btnStartCapture.Image = Properties.Resources.Start50x3;
             btnStartCapture.ImageTransparentColor = Color.Magenta;
             btnStartCapture.Name = "btnStartCapture";
-            btnStartCapture.Size = new Size(24, 24);
+            btnStartCapture.Size = new Size(29, 25);
             btnStartCapture.Tag = "Start Scan";
             btnStartCapture.Text = "Start Scan";
             btnStartCapture.ToolTipText = "Start Scan,  Key Space";
@@ -1048,7 +1063,7 @@
             btnStopScan.Image = Properties.Resources.Stop50x2;
             btnStopScan.ImageTransparentColor = Color.Magenta;
             btnStopScan.Name = "btnStopScan";
-            btnStopScan.Size = new Size(24, 24);
+            btnStopScan.Size = new Size(29, 25);
             btnStopScan.Tag = "Stop Scan";
             btnStopScan.Text = "Stop Scan";
             btnStopScan.ToolTipText = "Stop Scan, Key End";
@@ -1057,12 +1072,12 @@
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 27);
+            toolStripSeparator1.Size = new Size(6, 28);
             // 
             // lblDPI
             // 
             lblDPI.Name = "lblDPI";
-            lblDPI.Size = new Size(25, 24);
+            lblDPI.Size = new Size(32, 25);
             lblDPI.Tag = "DPI";
             lblDPI.Text = "DPI";
             // 
@@ -1070,13 +1085,13 @@
             // 
             cobDPI.BackColor = SystemColors.Info;
             cobDPI.Name = "cobDPI";
-            cobDPI.Size = new Size(106, 27);
+            cobDPI.Size = new Size(120, 28);
             cobDPI.SelectedIndexChanged += cobDPI_SelectedIndexChanged;
             // 
             // lblMode
             // 
             lblMode.Name = "lblMode";
-            lblMode.Size = new Size(38, 24);
+            lblMode.Size = new Size(48, 25);
             lblMode.Tag = "Mode";
             lblMode.Text = "Mode";
             // 
@@ -1084,13 +1099,13 @@
             // 
             cobMode.BackColor = SystemColors.Info;
             cobMode.Name = "cobMode";
-            cobMode.Size = new Size(106, 27);
+            cobMode.Size = new Size(120, 28);
             cobMode.SelectedIndexChanged += cobMode_SelectedIndexChanged;
             // 
             // lblSize
             // 
             lblSize.Name = "lblSize";
-            lblSize.Size = new Size(27, 24);
+            lblSize.Size = new Size(36, 25);
             lblSize.Tag = "Size";
             lblSize.Text = "Size";
             // 
@@ -1098,13 +1113,13 @@
             // 
             cobSize.BackColor = SystemColors.Info;
             cobSize.Name = "cobSize";
-            cobSize.Size = new Size(106, 27);
+            cobSize.Size = new Size(120, 28);
             cobSize.SelectedIndexChanged += comboSize_SelectedIndexChanged;
             // 
             // lblFormat
             // 
             lblFormat.Name = "lblFormat";
-            lblFormat.Size = new Size(45, 24);
+            lblFormat.Size = new Size(56, 25);
             lblFormat.Tag = "Format";
             lblFormat.Text = "Format";
             // 
@@ -1113,13 +1128,13 @@
             cobOutputFormat.BackColor = SystemColors.Info;
             cobOutputFormat.Items.AddRange(new object[] { "JPG", "TIFF" });
             cobOutputFormat.Name = "cobOutputFormat";
-            cobOutputFormat.Size = new Size(106, 27);
+            cobOutputFormat.Size = new Size(120, 28);
             cobOutputFormat.SelectedIndexChanged += cobOutputFormat_SelectedIndexChanged;
             // 
             // lblDuplex
             // 
             lblDuplex.Name = "lblDuplex";
-            lblDuplex.Size = new Size(43, 24);
+            lblDuplex.Size = new Size(56, 25);
             lblDuplex.Tag = "Duplex";
             lblDuplex.Text = "Duplex";
             // 
@@ -1130,14 +1145,14 @@
             chkDuplex.Image = Properties.Resources.checkboxUnchecked50x;
             chkDuplex.ImageTransparentColor = Color.Magenta;
             chkDuplex.Name = "chkDuplex";
-            chkDuplex.Size = new Size(24, 24);
+            chkDuplex.Size = new Size(29, 25);
             chkDuplex.Text = "toolStripButton1";
             chkDuplex.CheckedChanged += ckDuplex_CheckedChanged;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 27);
+            toolStripSeparator2.Size = new Size(6, 28);
             // 
             // btnScannerSettings
             // 
@@ -1145,7 +1160,7 @@
             btnScannerSettings.Image = Properties.Resources.Settings50x3;
             btnScannerSettings.ImageTransparentColor = Color.Magenta;
             btnScannerSettings.Name = "btnScannerSettings";
-            btnScannerSettings.Size = new Size(24, 24);
+            btnScannerSettings.Size = new Size(29, 25);
             btnScannerSettings.Text = "Scanner Settings";
             btnScannerSettings.Click += btnScannerSettings_Click;
             // 
@@ -1156,9 +1171,9 @@
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
+            flowLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1199, 25);
+            flowLayoutPanel1.Size = new Size(1371, 42);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // btnClose
@@ -1167,10 +1182,10 @@
             btnClose.Cursor = Cursors.Hand;
             btnClose.FlatStyle = FlatStyle.Popup;
             btnClose.ForeColor = Color.White;
-            btnClose.Location = new Point(1092, 2);
-            btnClose.Margin = new Padding(3, 2, 3, 2);
+            btnClose.Location = new Point(1248, 3);
+            btnClose.Margin = new Padding(4, 3, 4, 3);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(104, 28);
+            btnClose.Size = new Size(119, 37);
             btnClose.TabIndex = 0;
             btnClose.Tag = "Close";
             btnClose.Text = "Close";
@@ -1183,10 +1198,10 @@
             btnSubmit.Cursor = Cursors.Hand;
             btnSubmit.FlatStyle = FlatStyle.Popup;
             btnSubmit.ForeColor = Color.White;
-            btnSubmit.Location = new Point(982, 2);
-            btnSubmit.Margin = new Padding(3, 2, 3, 2);
+            btnSubmit.Location = new Point(1121, 3);
+            btnSubmit.Margin = new Padding(4, 3, 4, 3);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(104, 28);
+            btnSubmit.Size = new Size(119, 37);
             btnSubmit.TabIndex = 0;
             btnSubmit.Tag = "Submit";
             btnSubmit.Text = "Submit";
@@ -1200,7 +1215,8 @@
             menTop.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
             menTop.Location = new Point(0, 0);
             menTop.Name = "menTop";
-            menTop.Size = new Size(1199, 24);
+            menTop.Padding = new Padding(7, 3, 0, 3);
+            menTop.Size = new Size(1371, 30);
             menTop.TabIndex = 2;
             menTop.Text = "Scan";
             // 
@@ -1208,7 +1224,7 @@
             // 
             toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { menScanNewPage, menScanBefore, menScanAfter, menReplaceScan });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(44, 20);
+            toolStripMenuItem1.Size = new Size(54, 24);
             toolStripMenuItem1.Tag = "Scan";
             toolStripMenuItem1.Text = "Scan";
             // 
@@ -1216,7 +1232,7 @@
             // 
             menScanNewPage.Name = "menScanNewPage";
             menScanNewPage.ShortcutKeyDisplayString = "Shift+S";
-            menScanNewPage.Size = new Size(186, 22);
+            menScanNewPage.Size = new Size(234, 26);
             menScanNewPage.Tag = "New Page";
             menScanNewPage.Text = "New Page";
             menScanNewPage.Click += menScanNewPage_Click;
@@ -1225,7 +1241,7 @@
             // 
             menScanBefore.Name = "menScanBefore";
             menScanBefore.ShortcutKeyDisplayString = "Shift+B";
-            menScanBefore.Size = new Size(186, 22);
+            menScanBefore.Size = new Size(234, 26);
             menScanBefore.Tag = "Insert Before";
             menScanBefore.Text = "Insert Before";
             menScanBefore.Click += menScanBefore_Click;
@@ -1234,7 +1250,7 @@
             // 
             menScanAfter.Name = "menScanAfter";
             menScanAfter.ShortcutKeyDisplayString = "Shift+A";
-            menScanAfter.Size = new Size(186, 22);
+            menScanAfter.Size = new Size(234, 26);
             menScanAfter.Tag = "Insert After";
             menScanAfter.Text = "Insert After";
             menScanAfter.Click += menScanAfter_Click;
@@ -1243,23 +1259,23 @@
             // 
             menReplaceScan.Name = "menReplaceScan";
             menReplaceScan.ShortcutKeyDisplayString = "Shift+R";
-            menReplaceScan.Size = new Size(186, 22);
+            menReplaceScan.Size = new Size(234, 26);
             menReplaceScan.Tag = "Replace";
             menReplaceScan.Text = "Replace";
             menReplaceScan.Click += menReplaceScan_Click;
             // 
             // frmScan
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1199, 562);
+            ClientSize = new Size(1371, 750);
             Controls.Add(spcMain);
             Controls.Add(statusStrip1);
             Controls.Add(menTop);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menTop;
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "frmScan";
             StartPosition = FormStartPosition.CenterScreen;
             Tag = "Scan";
